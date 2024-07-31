@@ -21,7 +21,12 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@styles/*": ["src/view/styles/*"],
+      "@view/*": ["src/view/*"],
+      "@layout/*": ["src/layout/*"]
+    }
   },
   "include": ["src"]
 }
