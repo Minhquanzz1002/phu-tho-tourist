@@ -25,7 +25,9 @@
     "paths": {
       "@styles/*": ["src/view/styles/*"],
       "@view/*": ["src/view/*"],
-      "@layout/*": ["src/layout/*"]
+      "@layout/*": ["src/layout/*"],
+      "@assets/*": ["src/shared/assets/*"],
+      "@shared/*": ["src/shared/*"]
     }
   },
   "include": ["src"]

@@ -4,6 +4,10 @@
 
 html {
   font-size: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 8px;
+  }
 }
 
 body  {
@@ -12,9 +16,107 @@ body  {
   font-size: 1.6rem;
   font-weight: normal;
   line-height: normal;
+  font-family: 'Roboto', sans-serif;
 }
 
 a, a:hover {
   text-decoration: none;
+  color: white;
 }
 
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+@font-face {
+  font-family: 'Philosopher';
+  font-weight: normal;
+  font-display: swap;
+  src: local("Philosopher Regular"), local("Philosopher-Regular"), url("../../shared/assets/font/Philosopher/Philosopher-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'Philosopher';
+  font-weight: bold;
+  font-display: swap;
+  src: local("Philosopher Bold"), local("Philosopher-Bold"), url("../../shared/assets/font/Philosopher/Philosopher-Bold.ttf");
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: local("Helvetica Neue"), url("../../shared/assets/font/Helvetica/HelveticaNeueBold.otf");
+}
+
+.container {
+  width: 80%;
+}
+
+.hv-underline:hover {
+  text-decoration-line: underline;
+}
+
+
+//---------------------------
+//      UTILITIES           |
+//---------------------------
+.w-full {
+  width: 100%;
+}
+
+// Display
+.flex {
+  display: flex;
+}
+
+//  Flex direction
+.flex-col {
+  flex-direction: column;
+}
+
+// Justify content
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+// Align items
+.items-center {
+  align-items: center;
+}
+
+// Padding
+.p-0 {
+  padding: 0;
+}
+
+.p-x-0 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+// List style
+.list-inside {
+  list-style-position: inside;
+}
+
+.list-none {
+  list-style-type: none;
+}
+
+// Cursor
+.cursor-default {
+  cursor: default;
+}
