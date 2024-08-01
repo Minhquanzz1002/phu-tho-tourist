@@ -1,0 +1,13 @@
+#footer .copyright {
+  display: block;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+#footer .footer-col {
+  @media (max-width: 768px) {
+    margin-top: 4rem;
+  }
+}
