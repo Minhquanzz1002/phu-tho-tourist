@@ -1,3 +1,4 @@
+@import "variable";
 //---------------------------
 //      RESET CSS           |
 //---------------------------
@@ -6,11 +7,15 @@ html {
   font-size: 10px;
 
   @media (max-width: 768px) {
+    font-size: 7px;
+  }
+
+  @media (max-width: 1279px) {
     font-size: 8px;
   }
 }
 
-body  {
+body {
   margin: 0;
   padding: 0;
   font-size: 1.6rem;
@@ -24,7 +29,7 @@ a, a:hover {
   color: white;
 }
 
-ul {
+ul, p {
   padding: 0;
   margin: 0;
 }
@@ -51,6 +56,20 @@ h1, h2, h3, h4, h5, h6 {
 
 @font-face {
   font-family: 'Helvetica Neue';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Helvetica Neue"), url("../../shared/assets/font/Helvetica/HelveticaNeueRoman.otf");
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  font-style: italic;
+  font-weight: 400;
+  src: local("Helvetica Neue"), url("../../shared/assets/font/Helvetica/HelveticaNeueItalic.ttf");
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -65,12 +84,39 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration-line: underline;
 }
 
+.ant-btn {
+  height: 4rem;
+  color: #FFF;
+  line-height: normal;
+  font: {
+    size: 1.8rem;
+    family: "Roboto", sans-serif;
+    weight: 600;
+  };
+}
+
+.ant-btn-primary {
+  background: $bluePrimary500;
+
+  &:hover {
+    background: $bluePrimary400 !important;
+  }
+}
+
 
 //---------------------------
 //      UTILITIES           |
 //---------------------------
 .w-full {
   width: 100%;
+}
+
+.w-80 {
+  width: 80%;
+}
+
+.w-75 {
+  width: 75%;
 }
 
 // Display
@@ -119,4 +165,24 @@ h1, h2, h3, h4, h5, h6 {
 // Cursor
 .cursor-default {
   cursor: default;
+}
+
+// Text color
+.text-white {
+  color: white;
+}
+
+// Text align
+.text-center {
+  text-align: center;
+}
+
+.text-start {
+  text-align: start;
+}
+
+// background
+.bg-section {
+  background: rgba(255, 255, 255, 0.70);
+  backdrop-filter: blur(7.5px);
 }
