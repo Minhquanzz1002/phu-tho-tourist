@@ -1,0 +1,328 @@
+@import "../styles/variable";
+//----------------------------------
+//          SECTION 1               |
+//----------------------------------
+#documentSection1 {
+  .container-heading {
+    position: relative;
+
+    .wrap-heading {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  h2 {
+    font: {
+      size: 4rem;
+      style: normal;
+      weight: 700;
+      family: "Philosopher", sans-serif;
+    };
+    color: $bluePrimary500;
+    line-height: 8rem;
+  }
+
+  .scroll-to-bottom {
+
+    @media (max-width: 768px) {
+      transition: transform 0.3ms ease-out;
+      animation: bounce 1s infinite;
+      transform: translateY(5px);
+    }
+
+    &:hover {
+      transition: transform 0.3ms ease-out;
+      animation: bounce 1s infinite;
+      transform: translateY(5px);
+    }
+  }
+
+  .wrap-cards {
+    margin-top: 4.8rem;
+    margin-bottom: 3.6rem;
+    padding: {
+      left: 15%;
+      right: 15%;
+    };
+
+    .ant-col:nth-child(7) {
+      display: block;
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .ant-col:nth-child(8) {
+
+      display: block;
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      padding: {
+        left: 0;
+        right: 0;
+      };
+    }
+
+    .card {
+      overflow: hidden;
+      position: relative;
+      height: 26.1rem;
+      border-radius: 1.2rem;
+      z-index: 1;
+      box-shadow: 0 1.776px 7.102px 0 rgba(0, 0, 0, 0.25);
+      padding: {
+        left: 3rem;
+        right: 3rem;
+      }
+
+      &:hover > img {
+        transform: scale(1.2);
+        transition: all 0.2s ease-out;
+      }
+
+      &:hover > .card-text {
+        display: block;
+      }
+
+      .icon {
+        margin-top: 5rem;
+        z-index: 2;
+        position: relative;
+      }
+
+      img {
+        position: absolute;
+        inset: 0;
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+      }
+
+      .title {
+        position: relative;
+        font: {
+          size: 1.4rem;
+          weight: 700;
+          family: "Roboto", sans-serif;
+        };
+        color: white;
+        user-select: none;
+      }
+
+      .card-text {
+        display: none;
+        margin-top: auto;
+        margin-bottom: 1.5rem;
+        position: relative;
+        font: {
+          size: 1.4rem;
+          weight: 700;
+          family: "Roboto", sans-serif;
+        };
+        color: white;
+        user-select: none;
+      }
+    }
+  }
+}
+
+//----------------------------------
+//          SECTION 2               |
+//----------------------------------
+#documentSection2 {
+  border-radius: 2rem;
+  margin: {
+    top: 20rem;
+    bottom: 8rem;
+  };
+  padding: 4.8rem 5.4rem;
+  box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.20);
+  background: rgba(255, 255, 255, 0.70);
+  backdrop-filter: blur(7.5px);
+
+  @media (max-width: 768px) {
+    background: none;
+    backdrop-filter: none;
+    box-shadow: none;
+    padding: {
+      left: 0;
+      right: 0;
+    };
+  }
+
+  .rectangle {
+    width: 0;
+    height: 0;
+    border: {
+      left: 5px solid transparent;
+      right: 5px solid transparent;
+      bottom: 10px solid $bluePrimary500;
+    };
+    transform: rotate(90deg);
+    border-radius: 3px;
+  }
+
+  #searchBar {
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    label {
+      font: {
+        family: "Roboto", sans-serif;
+        size: 1.8rem;
+        weight: 600;
+      };
+      color: $bluePrimary500;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+  }
+
+  table {
+    border-spacing: 0 0.8rem;
+    margin: {
+      top: 1.4rem;
+      bottom: 3.2rem;
+    };
+    text-align: left;
+
+    @media (max-width: 768px) {
+      border-spacing: 0 2rem;
+    }
+
+    td {
+      background: $bluePrimary50;
+    }
+
+    th {
+      background: $bluePrimary500;
+    }
+
+    th, td {
+      padding: {
+        top: 1.2rem;
+        bottom: 1.1rem;
+      };
+    }
+
+    th:last-child, th:first-child, td:last-child, td:first-child {
+      text-align: center;
+    }
+
+    td:nth-child(2) {
+      @media (max-width: 768px) {
+        border-radius: 0.8rem 0 0 0.8rem;
+        padding: 2rem;
+      }
+
+      .document-created-date {
+        display: none;
+        font: {
+          family: "Roboto", sans-serif;
+          size: 1.2rem;
+          weight: 400;
+        };
+        color: $gray600;
+
+        @media (max-width: 768px) {
+          display: block;
+        }
+      }
+
+      .document-name {
+        @media (max-width: 768px) {
+          color: $bluePrimary600;
+          font-weight: 700;
+        }
+      }
+    }
+
+    th:first-child, td:first-child {
+      border-radius: 0.8rem 0 0 0.8rem;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    th:nth-child(3), td:nth-child(3) {
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    th:last-child, td:last-child {
+      border-radius: 0 0.8rem 0.8rem 0;
+    }
+
+    thead {
+      color: #FFF;
+      font: {
+        family: "Roboto", sans-serif;
+        weight: 700;
+        size: 1.8rem;
+      };
+
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+  }
+
+  .wrap-docs-per-page {
+    color: $gray600;
+    font: {
+      size: 1.6rem;
+      weight: 400;
+      family: "Roboto", sans-serif;
+    };
+    line-height: 2.1rem;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .docs-per-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.4rem;
+    border: 1px solid $bluePrimary500;
+    height: 3.2rem;
+    width: 3.6rem;
+    font: {
+      family: "Open Sans", sans-serif;
+      weight: 700;
+      size: 1.6rem;
+    };
+    color: $bluePrimary500;
+  }
+
+  .table-footer {
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.70);
+      backdrop-filter: blur(7.5px);
+      border-radius: 2.4rem;
+      padding: {
+        top: 0.5rem;
+        bottom: 0.5rem;
+      };
+    }
+  }
+}
