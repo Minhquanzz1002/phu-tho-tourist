@@ -5,3 +5,8 @@ export {default as IconFacebook} from "./FacebookIcon.tsx";
 export {default as IconMenu} from "./MenuIcon.tsx";
 export {default as IconXMark} from "./XMarkIcon.tsx";
 export {default as IconChevronsDown} from "./ChevronsDownIcon.tsx";
+export {default as IconCalendar} from "./CalendarIcon.tsx";
+export {default as IconFile} from "./FileIcon.tsx";
+export {default as IconPolygon} from "./PolygonIcon.tsx";
+export {default as IconDownload} from "./DownloadIcon.tsx";
+export {default as IconSearch} from "./SearchIcon.tsx";

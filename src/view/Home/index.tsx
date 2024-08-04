@@ -6,7 +6,7 @@ import {IconChevronsDown} from "@assets/icons";
 const Home = () => {
     return (
         <React.Fragment>
-            <section className="flex flex-col justify-center text-white text-center w-80" id="homeSection1">
+            <section className="flex flex-col justify-center text-white text-center w-full" id="homeSection1">
                 <h2>CÔNG TY CỔ PHẦN DỊCH VỤ DU LỊCH PHÚ THỌ</h2>
                 <h1>PHUTHOTOURIST</h1>
                 <div className="subtitle">Ngày thành lập 01/01/2019</div>
@@ -43,7 +43,7 @@ const Home = () => {
                     </button>
                 </Flex>
             </section>
-            <section className="w-80 bg-section" id="homeSection2">
+            <section className="w-full bg-section" id="homeSection2">
                 <Row>
                     <Col xl={12} xs={24} sm={24} md={12} className="wrap-post">
                         <Flex vertical gap="3.2rem">
@@ -84,7 +84,7 @@ const Home = () => {
                     </Col>
                 </Row>
             </section>
-            <section className="flex flex-col w-80 text-center" id="homeSection3">
+            <section className="flex flex-col w-full text-center" id="homeSection3">
                 <h3>CHIA SẺ THÔNG TIN</h3>
                 <h4>Bài viết mới</h4>
                 <Flex justify="center" className="w-full">
@@ -227,7 +227,7 @@ const Home = () => {
                     <Button type="primary">Xem thêm bài viết</Button>
                 </Flex>
             </section>
-            <section className="flex flex-col w-80 text-center bg-section" id="homeSection4">
+            <section className="flex flex-col w-full text-center bg-section" id="homeSection4">
                 <Flex vertical gap="1.6rem">
                     <h3>LĨNH VỰC HOẠT ĐỘNG</h3>
                     <h4>Các dịch vụ trọng tâm</h4>
