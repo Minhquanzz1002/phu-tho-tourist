@@ -10,3 +10,5 @@ export {default as IconFile} from "./FileIcon.tsx";
 export {default as IconPolygon} from "./PolygonIcon.tsx";
 export {default as IconDownload} from "./DownloadIcon.tsx";
 export {default as IconSearch} from "./SearchIcon.tsx";
+export {default as IconBriefcase} from "./BriefcaseIcon.tsx";
+export {default as IconIdCard} from "./IdCardIcon.tsx";
