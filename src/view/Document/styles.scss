@@ -3,28 +3,6 @@
 //          SECTION 1               |
 //----------------------------------
 #documentSection1 {
-  .container-heading {
-    position: relative;
-
-    .wrap-heading {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-
-  h2 {
-    font: {
-      size: 4rem;
-      style: normal;
-      weight: 700;
-      family: "Philosopher", sans-serif;
-    };
-    color: $bluePrimary500;
-    line-height: 8rem;
-  }
 
   .scroll-to-bottom {
 

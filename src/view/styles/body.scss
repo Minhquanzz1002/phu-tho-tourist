@@ -7,12 +7,20 @@
 html {
   font-size: 10px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 576px) {
+    font-size: 6px;
+  }
+
+  @media (min-width: 576px) {
     font-size: 7px;
   }
 
-  @media (max-width: 1279px) {
+  @media (min-width:992px) and (max-width: 1200px) {
     font-size: 8px;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 10px;
   }
 }
 
@@ -155,6 +163,11 @@ button {
 
 .w-75 {
   width: 75%;
+}
+
+// Height
+.h-full  {
+  height: 100%;
 }
 
 // Display

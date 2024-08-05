@@ -1,10 +1,11 @@
 import "./styles.scss";
+import TitlePage from "@shared/components/TitlePage";
 
 const Post = () => {
     return (
-        <div>
-
-        </div>
+        <section>
+            <TitlePage title="BÀI VIẾT"/>
+        </section>
     );
 };
 
