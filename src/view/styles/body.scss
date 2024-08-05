@@ -7,12 +7,20 @@
 html {
   font-size: 10px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 576px) {
+    font-size: 6px;
+  }
+
+  @media (min-width: 576px) {
     font-size: 7px;
   }
 
-  @media (max-width: 1279px) {
+  @media (min-width:992px) and (max-width: 1200px) {
     font-size: 8px;
+  }
+
+  @media (min-width: 1200px) {
+    font-size: 10px;
   }
 }
 
@@ -157,6 +165,11 @@ button {
   width: 75%;
 }
 
+// Height
+.h-full  {
+  height: 100%;
+}
+
 // Display
 .flex {
   display: flex;
@@ -223,4 +236,9 @@ button {
 .bg-section {
   background: rgba(255, 255, 255, 0.70);
   backdrop-filter: blur(7.5px);
+}
+
+.bg-section-rounded {
+  padding: 2.8rem 2rem;
+  border-radius: 2.4rem;
 }

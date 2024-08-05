@@ -1,9 +1,10 @@
 import "./styles.scss";
 import React from "react";
 import {Col, DatePicker, Flex, Input, Pagination, Row, Space} from "antd";
-import {IconCalendar, IconChevronsDown, IconDownload, IconFile, IconPolygon, IconSearch} from "@assets/icons";
+import {IconCalendar, IconChevronsDown, IconDownload, IconFile, IconSearch} from "@assets/icons";
 import {Link} from "react-router-dom";
 import dayjs from "dayjs";
+import TitlePage from "@shared/components/TitlePage";
 
 const dateFormat = 'DD/MM/YYYY';
 
@@ -50,19 +51,14 @@ const Document = () => {
     return (
         <React.Fragment>
             <section className="w-full text-center" id="documentSection1">
-                <div className="container-heading">
-                    <IconPolygon/>
-                    <div className="wrap-heading">
-                        <h2>Tài liệu</h2>
-                    </div>
-                </div>
+                <TitlePage title="TÀI LIỆU"/>
                 <Row gutter={[22, 22]} className="wrap-cards">
                     {
                         categories.map((category, index) => (
                             <Col xs={8} sm={8} lg={6} xl={6} key={"col-" + index}>
                                 <Link to="/bai-viet">
                                     <Flex vertical align="center" className="card">
-                                        <img src={"https://firebasestorage.googleapis.com/v0/b/fir-alta-aef46.appspot.com/o/document%2Fsection%201%2F" + category.image} alt="Image"/>
+                                        <img src={"https://firebasestorage.googleapis.com/v0/b/fir-alta-aef46.appspot.com/o/document%2Fsection%201%2F" + category.image} alt="Image" loading="lazy"/>
                                         <IconFile className="icon"/>
                                         <div className="title">{category.name}</div>
                                         <div className="card-text">Click để xem</div>
@@ -82,7 +78,7 @@ const Document = () => {
                 <Flex justify="space-between" align="center" className="w-full" id="searchBar">
                     <div>
                         <label htmlFor="startDatePicker">Ngày tạo</label>
-                        <Flex gap="0.8rem" align="center">
+                        <Flex gap="small" align="center">
                             <DatePicker id="startDatePicker" format={dateFormat} placeholder="DD/MM/YYYY"
                                         suffixIcon={<IconCalendar/>}/>
                             <span className="rectangle"></span>
