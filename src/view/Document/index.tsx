@@ -78,7 +78,7 @@ const Document = () => {
                 <Flex justify="space-between" align="center" className="w-full" id="searchBar">
                     <div>
                         <label htmlFor="startDatePicker">Ngày tạo</label>
-                        <Flex gap="0.8rem" align="center">
+                        <Flex gap="small" align="center">
                             <DatePicker id="startDatePicker" format={dateFormat} placeholder="DD/MM/YYYY"
                                         suffixIcon={<IconCalendar/>}/>
                             <span className="rectangle"></span>
