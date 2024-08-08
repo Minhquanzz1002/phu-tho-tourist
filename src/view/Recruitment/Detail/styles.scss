@@ -1,0 +1,86 @@
+@import "../../../view/styles/variable";
+@import "../../../view/styles/mixin";
+
+#recruitmentDetailSection {
+  @include background-section(2rem);
+  padding: 4.8rem 17.7rem;
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+  }
+
+  .wrap-logo {
+    height: 10rem;
+    width: 10rem;
+
+    img {
+      width: 100%;
+      object-fit: cover;
+      transform: scale(1.2);
+    }
+  }
+
+  h1 {
+    @include font-roboto(3.6rem, $bluePrimary600,  700);
+  }
+
+  .subtitle {
+    @include font-roboto(2rem, $bluePrimary400,  400);
+  }
+
+  .job-location, .job-post-date {
+    @include font-roboto(1.8rem,  $gray500,  600);
+    line-height: normal;
+  }
+
+  .recruitment-status {
+    padding: 1.6rem 2.4rem;
+    border-radius: 8.9rem;
+
+    &--open  {
+      background-color: $green-50;
+      @include font-roboto(1.8rem,  $green-500, 600);
+      line-height: normal;
+    }
+  }
+
+  h2 {
+    @include font-roboto(2.4rem,  $bluePrimary500,  600);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th, td {
+      padding: 1.6rem 3.6rem;
+      border-bottom: 1px solid $gray200;
+      line-height: 3.6rem;
+    }
+
+    tr:last-child {
+      th, td {
+        border-bottom: none;
+      }
+    }
+
+    th {
+      text-wrap: nowrap;
+      text-align: left;
+      border-right: 1px solid $gray200;
+      @include font-roboto(1.8rem, $gray700, 600);
+    }
+
+    td {
+      @include font-roboto(1.6rem, $gray700,400);
+    }
+  }
+
+  form {
+    .label {
+      @include font-roboto(1.8rem, $gray600, 600);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+  }
+}

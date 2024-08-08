@@ -4,6 +4,7 @@ import {IconBriefcase, IconIdCard, IconSearch} from "@assets/icons";
 import MapPinIcon from "@assets/icons/MapPinIcon.tsx";
 import TitlePage from "@shared/components/TitlePage";
 import Chip from "@shared/components/Chip";
+import {Link} from "react-router-dom";
 
 interface IJobPosting {
     position: string;
@@ -185,7 +186,7 @@ const Recruitment = () => {
                                             <div className="card-label-description">Mô tả công việc:</div>
                                             <div className="card-description">{job.description}</div>
                                         </Space>
-                                        <Button type="primary">Xem chi tiết</Button>
+                                        <Button type="primary"><Link to="/tuyen-dung/chi-tiet" style={{width: '100%', height: '100%'}}>Xem chi tiết</Link></Button>
                                     </div>
                                 </Col>
                             ))
