@@ -1,12 +1,12 @@
 import "./styles.scss";
 import React from "react";
-import {Col, DatePicker, Flex, Input, Pagination, Row, Space} from "antd";
-import {IconCalendar, IconChevronsDown, IconDownload, IconFile, IconSearch} from "@assets/icons";
+import {Col, Flex, Input, Pagination, Row, Space} from "antd";
+import {IconChevronsDown, IconDownload, IconFile, IconSearch} from "@assets/icons";
 import {Link} from "react-router-dom";
 import dayjs from "dayjs";
 import TitlePage from "@shared/components/TitlePage";
+import DateRangePicker from "@shared/components/DateRangePicker";
 
-const dateFormat = 'DD/MM/YYYY';
 
 interface IDocumentCategory {
     image: string;
@@ -78,12 +78,7 @@ const Document = () => {
                 <Flex justify="space-between" align="center" className="w-full" id="searchBar">
                     <div>
                         <label htmlFor="startDatePicker">Ngày tạo</label>
-                        <Flex gap="small" align="center">
-                            <DatePicker id="startDatePicker" format={dateFormat} placeholder="DD/MM/YYYY"
-                                        suffixIcon={<IconCalendar/>}/>
-                            <span className="rectangle"></span>
-                            <DatePicker format={dateFormat} placeholder="DD/MM/YYYY" suffixIcon={<IconCalendar/>}/>
-                        </Flex>
+                        <DateRangePicker/>
                     </div>
 
                     <div>

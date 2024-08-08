@@ -1,0 +1,77 @@
+@import "../../../view/styles/variable";
+@import "../../../view/styles/mixin";
+
+.carousel-component {
+  height: 60rem;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1.2rem;
+  background-color: white;
+
+  .wrap-image {
+    height: 38.6rem;
+    width: 100%;
+    overflow: hidden;
+
+    img {
+      object-fit: cover;
+      height: 38.6rem;
+      width: 100%;
+    }
+  }
+
+  .carousel-title {
+    @include font-philosopher-bold(3.8rem, $bluePrimary500);
+    line-height: normal;
+  }
+
+  .carousel-btn {
+    color: $bluePrimary400;
+
+    &:hover {
+      color: $bluePrimary600;
+    }
+  }
+
+  .carousel-description {
+    @include font-roboto(1.8rem, $gray600, 400);
+    line-height: 150%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .carousel-component__container-footer {
+    height: 21.8rem;
+    padding: 2rem;
+
+    transition: opacity 0.1s;
+
+    &.fade-out {
+      opacity: 0;
+    }
+
+    &.fade-in {
+      opacity: 1;
+    }
+  }
+
+  .carousel-btn-dot {
+    width: 1.6rem;
+    height: 1.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    svg {
+      position: absolute;
+    }
+  }
+}
