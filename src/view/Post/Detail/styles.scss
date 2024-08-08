@@ -1,0 +1,37 @@
+@import "../../../view/styles/variable";
+@import "../../../view/styles/mixin";
+
+#postDetailSection1 {
+  @include background-section(2rem);
+  padding: 4.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4.8rem;
+
+  h1  {
+    @include font-roboto(4.8rem,  $bluePrimary500, 700);
+  }
+
+  .post-author {
+    @include font-roboto(1.6rem,  $gray500, 400);
+    line-height: 2.1rem;
+  }
+
+  .post-content {
+    @include font-roboto(1.8rem,  $gray700, 400);
+    line-height: 150%;
+
+    * {
+      margin-top: 1rem;
+    }
+  }
+
+  .container-related-post {
+    .container-related-post__title {
+      @include font-roboto(3.2rem,  $bluePrimary500, 600);
+      line-height: 3.6rem;
+    }
+  }
+}

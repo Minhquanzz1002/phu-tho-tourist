@@ -1,1 +1,101 @@
 @import "../styles/variable";
+@import "../styles/mixin";
+
+//----------------------------------
+//          SECTION 1               |
+//----------------------------------
+#postSection1 {
+
+  .container-new-post {
+    display: flex;
+    flex-direction: column;
+    padding: 2.4rem;
+    height: 100%;
+    @include background-section(0.8rem);
+
+    h3 {
+      @include font-roboto-bold(2.4rem, $bluePrimary500)
+    }
+  }
+
+  .container-new-post-scroll {
+    position: relative;
+    overflow-y: hidden;
+    margin-top: 1.6rem;
+    flex: 1;
+    width: 100%;
+
+    @media (max-width: 768px) {
+      min-height: 35rem;
+    }
+
+    .wrap-new-post-scroll {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      inset: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+
+      &::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background-color: $gray50;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $bluePrimary300;
+        border-radius: 10px;
+      }
+    }
+  }
+}
+
+//----------------------------------
+//          SECTION 2               |
+//----------------------------------
+#postSection2 {
+  margin-top: 2.4rem;
+
+  .container-filter-topic {
+    @include background-section(1.2rem);
+    padding: 2.8rem 2rem;
+    height: 100%;
+
+    h3 {
+      @include font-philosopher-bold(2.4rem, $bluePrimary500);
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .container-search-filter {
+    @include background-section(1.2rem);
+    padding: 2rem;
+  }
+
+  .container-card-posts {
+    margin-top: 2.4rem;
+  }
+
+  .wrap-sort {
+    cursor: pointer;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+
+    div {
+      @include font-roboto-semi-bold(1.8rem, $gray500);
+    }
+  }
+
+  .wrap-pagination {
+    margin-top: 3.2rem;
+    padding: 0.5rem 1rem;
+    @include background-section(99px)
+  }
+}

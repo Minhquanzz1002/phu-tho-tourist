@@ -1,0 +1,40 @@
+@import "../../../view/styles/variable";
+@import "../../../view/styles/mixin";
+
+.container-topic-post {
+  padding: 2rem;
+  width: 100%;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  background: #FFF;
+
+  .wrap-icon {
+    height: 2.4rem;
+    width: 2.4rem;
+    color: $bluePrimary500;
+  }
+
+  div:last-child {
+    @include font-roboto-semi-bold(2rem, $bluePrimary300);
+  }
+
+  &:hover div:last-child {
+    color: $bluePrimary500;
+  }
+}
+
+.topic-post-primary {
+  background: $bluePrimary500;
+
+  .wrap-icon {
+    color: #FFF;
+  }
+
+  div:last-child {
+    color: #FFF;
+  }
+
+  &:hover div:last-child {
+    color: #FFF;
+  }
+}

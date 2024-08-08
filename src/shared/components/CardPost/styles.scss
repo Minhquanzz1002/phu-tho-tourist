@@ -1,1 +1,108 @@
 @import "../../../view/styles/variable";
+@import "../../../view/styles/mixin";
+
+.container-card-post-small {
+  background-color: #FFF;
+  border-radius: 0.4rem;
+  overflow: hidden;
+
+  .post-image {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    aspect-ratio: 1;
+  }
+
+  .post-title {
+    @include font-roboto(1.4rem, $gray500, 700);
+    @include line-clamp(2);
+    line-height: normal;
+    text-overflow: ellipsis;
+  }
+
+  .post-view {
+    @include font-roboto(1.2rem, $gray400, 400);
+  }
+}
+
+
+.container-card-post-medium {
+  &:hover {
+    .wrap-image {
+      div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        inset: 0;
+        z-index: 2;
+        position: absolute;
+        background: rgba(0, 0, 0, 0.50);
+        @include font-roboto(1.8rem, #FFF, 600);
+      }
+
+      img {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &.ant-card {
+    border: none;
+    overflow: hidden;
+  }
+
+  .ant-card-cover {
+    overflow: hidden;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+
+  .wrap-image {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      display: block;
+      transition: transform 0.3s ease-in-out;
+      width: 100%;
+    }
+
+    div {
+      display: none;
+    }
+  }
+
+  .ant-card-body {
+    padding: 1rem;
+
+    .post-author {
+      @include font-roboto(1.4rem, $gray400, 400);
+      line-height: normal;
+    }
+
+    h4 {
+      @include font-roboto(1.6rem, $bluePrimary500, 700);
+      line-height: normal;
+    }
+
+    .post-tags {
+      div {
+        padding: 0.8rem  1.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4.6rem;
+        background-color: $bluePrimary50;
+        text-wrap: nowrap;
+        @include font-roboto(1.2rem, $bluePrimary500, 600);
+      }
+    }
+
+    .post-view {
+      @include font-roboto(1.4rem, $gray400, 400);
+      line-height: normal;
+    }
+  }
+}

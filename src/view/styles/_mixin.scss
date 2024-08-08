@@ -1,0 +1,53 @@
+@mixin font-roboto-bold($size, $color) {
+  color: $color;
+  font: {
+    family: "Roboto", sans-serif;
+    weight: 700;
+    style: normal;
+    size: $size;
+  };
+}
+
+@mixin font-roboto($size, $color, $weight) {
+  color: $color;
+  font: {
+    family: "Roboto", sans-serif;
+    weight: $weight;
+    style: normal;
+    size: $size;
+  };
+}
+
+@mixin font-roboto-semi-bold($size, $color) {
+  color: $color;
+  font: {
+    family: "Roboto", sans-serif;
+    weight: 600;
+    style: normal;
+    size: $size;
+  };
+}
+
+@mixin font-philosopher-bold($size, $color) {
+  color: $color;
+  font: {
+    family: "Philosopher", sans-serif;
+    weight: 700;
+    style: normal;
+    size: $size;
+  };
+}
+
+@mixin background-section($radius) {
+  background-color: rgba(255, 255, 255, 0.70);
+  box-shadow: 0 2px 24px 0 rgba(0, 0, 0, 0.15);
+  border-radius: $radius;
+  backdrop-filter: blur(7.5px);
+}
+
+@mixin line-clamp($clamp) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $clamp;
+}
