@@ -112,24 +112,6 @@ button {
 //---------------------------
 //      CUSTOM ANTD          |
 //---------------------------
-.ant-btn {
-  height: 4rem;
-  color: #FFF;
-  line-height: normal;
-  font: {
-    size: 1.8rem;
-    family: "Roboto", sans-serif;
-    weight: 600;
-  };
-}
-
-.ant-btn-primary {
-  background: $bluePrimary500;
-
-  &:hover {
-    background: $bluePrimary400 !important;
-  }
-}
 
 // pagination
 .ant-pagination-item {

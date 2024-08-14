@@ -29,42 +29,42 @@
     font-style: italic;
   }
 
-  .slider {
-    margin-top: 4.2rem;
-    height: 53.2rem;
-    display: flex;
-    justify-content: center;
-
-    .card:nth-child(3) {
-      z-index: 3;
-    }
-
-    .card:nth-child(1), .card:nth-child(5) {
-      padding-top: 9.02rem;
-      z-index: 1;
-    }
-
-    .card:nth-child(1) {
-      transform: translateX(9.039rem);
-    }
-
-    .card:nth-child(5) {
-      transform: translateX(-9.039rem);
-    }
-
-    .card:nth-child(2), .card:nth-child(4) {
-      padding-top: 2.969rem;
-      z-index: 2;
-    }
-
-    .card:nth-child(2) {
-      transform: translateX(2.952rem);
-    }
-
-    .card:nth-child(4) {
-      transform: translateX(-2.952rem);
-    }
-  }
+  //.slider {
+  //  margin-top: 4.2rem;
+  //  height: 53.2rem;
+  //  display: flex;
+  //  justify-content: center;
+  //
+  //  .card:nth-child(3) {
+  //    z-index: 3;
+  //  }
+  //
+  //  .card:nth-child(1), .card:nth-child(5) {
+  //    padding-top: 9.02rem;
+  //    z-index: 1;
+  //  }
+  //
+  //  .card:nth-child(1) {
+  //    transform: translateX(9.039rem);
+  //  }
+  //
+  //  .card:nth-child(5) {
+  //    transform: translateX(-9.039rem);
+  //  }
+  //
+  //  .card:nth-child(2), .card:nth-child(4) {
+  //    padding-top: 2.969rem;
+  //    z-index: 2;
+  //  }
+  //
+  //  .card:nth-child(2) {
+  //    transform: translateX(2.952rem);
+  //  }
+  //
+  //  .card:nth-child(4) {
+  //    transform: translateX(-2.952rem);
+  //  }
+  //}
 
   button {
     border: none;
@@ -86,12 +86,7 @@
 //----------------------------------
 #homeSection2 {
   border-radius: 2.4rem 2.4rem 0 0;
-
-  .wrap-post {
-    padding-top: 8.3rem;
-    padding-bottom: 8.3rem;
-    padding-left: 5.4rem;
-  }
+  padding: 4.8rem 4rem;
 
   .category {
     color: $gray600;
@@ -122,26 +117,23 @@
     };
   }
 
-  .wrap-image {
-    padding: 4.6rem 8.1rem 5.6rem 0;
+  .wrap-banner {
+    .banner-item {
+      img {
+        object-fit: contain;
+        width: 100%;
+        border-radius: 27px;
+        border: 5px solid #FFF;
+      }
 
-    .banner:nth-child(1) {
-      width: 48.7rem;
-      height: 31.1rem;
-      border-radius: 27px;
-      border: 5px solid #FFF;
-      background: url("https://firebasestorage.googleapis.com/v0/b/fir-alta-aef46.appspot.com/o/home%2Fsection%202%2F1.png?alt=media&token=f9815e67-c478-4790-9939-74703f2e21bc") lightgray 50% / cover no-repeat;
-    }
+      &.banner-top {
+        padding-right: 6rem;
+      }
 
-    .banner:nth-child(2) {
-      margin-top: -5rem;
-      margin-left: 6.7rem;
-      width: 55.2rem;
-      height: 34rem;
-      border-radius: 27px;
-      border: 5px solid #FFF;
-      background: url("https://firebasestorage.googleapis.com/v0/b/fir-alta-aef46.appspot.com/o/home%2Fsection%202%2F2.png?alt=media&token=80c33b79-6809-44e3-912d-6e784b1013df") lightgray 50% / cover no-repeat;
-      box-shadow: 0 4px 21px 0 rgba(0, 0, 0, 0.25);
+      &.banner-bottom {
+        padding-left: 6rem;
+        margin-top: -5rem;
+      }
     }
   }
 }
@@ -187,52 +179,6 @@
     font-family: "Roboto", sans-serif;
     font-size: 2rem;
     color: var(--gray-gray-50, #F0F0F0);
-  }
-
-  .ant-card-body {
-    font-family: "Roboto", sans-serif;
-    padding: 2.4rem 1.6rem 2.8rem 1.6rem;
-
-    .post-owner {
-      font-size: 1.8rem;
-      font-weight: 400;
-      line-height: 150%;
-      color: $gray400;
-    }
-
-    .post-title {
-      color: $bluePrimary500;
-      font-size: 2rem;
-      font-weight: 700;
-      line-height: normal;
-    }
-
-    .post-desc {
-      font-size: 1.6rem;
-      line-height: 2.1rem;
-      font-weight: 400;
-      font-style: normal;
-      color: $gray500;
-    }
-
-    .post-tags span {
-      padding: 0.8rem 1.2rem;
-      font-family: "Roboto", sans-serif;
-      font-size: 1.4rem;
-      font-weight: 600;
-      line-height: normal;
-      color: $bluePrimary500;
-      border-radius: 4.6rem;
-      background: $bluePrimary50;
-    }
-
-    .post-view, .post-date {
-      color: $gray400;
-      font-size: 1.6rem;
-      font-weight: 400;
-      font-style: normal;
-      line-height: 2.1rem;
-    }
   }
 
   .wrap-btn {

@@ -34,7 +34,7 @@ const FooterComponent = () => {
 
     return (
         <Layout.Footer className="p-x-0" style={styles.footer} id="footer">
-            <Row className="container" justify="space-between">
+            <Row className="container" justify="space-between" gutter={[0, 24]}>
                 <Col className="footer-col">
                     <Flex vertical justify="space-between" style={{height: '100%'}}>
                         <Flex>
