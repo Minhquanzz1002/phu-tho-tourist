@@ -1,11 +1,12 @@
 import "./styles.scss";
 import React from "react";
-import {Col, Flex, Input, Pagination, Row, Space} from "antd";
-import {IconChevronsDown, IconDownload, IconFile, IconSearch} from "@assets/icons";
+import {Button, Col, Flex, Pagination, Row, Space} from "antd";
+import {IconChevronsDown, IconDownload, IconFile, IconSetting} from "@assets/icons";
 import {Link} from "react-router-dom";
 import dayjs from "dayjs";
 import TitlePage from "@shared/components/TitlePage";
 import DateRangePicker from "@shared/components/DateRangePicker";
+import AutocompleteSearch from "@shared/components/AutocompleteSearch";
 
 
 interface IDocumentCategory {
@@ -83,9 +84,19 @@ const Document = () => {
 
                     <div>
                         <label htmlFor="search">Từ khóa</label>
-                        <Input id="search" placeholder="Tìm kiếm" allowClear prefix={<IconSearch/>}/>
+                        <AutocompleteSearch/>
                     </div>
                 </Flex>
+
+                <Flex align="center" gap="small" id="searchBarMobile">
+                    <div style={{flex: 1}}>
+                        <AutocompleteSearch/>
+                    </div>
+                    <Button>
+                        <IconSetting/>
+                    </Button>
+                </Flex>
+
                 <table className="w-full">
                     <thead>
                     <tr>
