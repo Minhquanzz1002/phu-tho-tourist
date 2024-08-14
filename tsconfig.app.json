@@ -27,7 +27,8 @@
       "@view/*": ["src/view/*"],
       "@layout/*": ["src/layout/*"],
       "@assets/*": ["src/shared/assets/*"],
-      "@shared/*": ["src/shared/*"]
+      "@shared/*": ["src/shared/*"],
+      "@hook/*": ["src/shared/hook/*"]
     }
   },
   "include": ["src"]

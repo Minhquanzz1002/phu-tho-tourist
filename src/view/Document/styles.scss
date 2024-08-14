@@ -1,4 +1,5 @@
 @import "../styles/variable";
+@import "../styles/mixin";
 //----------------------------------
 //          SECTION 1               |
 //----------------------------------
@@ -151,6 +152,16 @@
       color: $bluePrimary500;
       margin-bottom: 0.8rem;
       display: block;
+    }
+  }
+
+  #searchBarMobile {
+    display: none;
+    @include background-section(1.2rem);
+    padding: 1.2rem;
+
+    @media (max-width: 768px) {
+      display: flex;
     }
   }
 

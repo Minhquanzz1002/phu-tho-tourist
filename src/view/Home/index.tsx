@@ -2,6 +2,17 @@ import "./styles.scss";
 import React from "react";
 import {Button, Card, Col, Flex, Row} from "antd";
 import {IconChevronsDown} from "@assets/icons";
+import FlipsterCarousel from "@shared/components/FlipsterCarousel";
+import {Link} from "react-router-dom";
+import CardPost from "@shared/components/CardPost";
+
+const flipsterItems : string[] = [
+    "1.jpg",
+    "2.jpg",
+    "3.jpg",
+    "4.jpg",
+    "5.jpg",
+]
 
 const Home = () => {
     return (
@@ -10,32 +21,8 @@ const Home = () => {
                 <h2>CÔNG TY CỔ PHẦN DỊCH VỤ DU LỊCH PHÚ THỌ</h2>
                 <h1>PHUTHOTOURIST</h1>
                 <div className="subtitle">Ngày thành lập 01/01/2019</div>
-                <div className="slider">
-                    <div className="card">
-                        <img
-                            src="https://firebasestorage.googleapis.com/v0/b/fir-alta-aef46.appspot.com/o/home%2Fsection%201%2F1.png?alt=media&token=1692c073-a24c-4bef-a36d-065be2970860"
-                            alt="Slider" fetchPriority="low" loading="lazy"/>
-                    </div>
-                    <div className="card">
-                        <img
-                            src="https://firebasestorage.googleapis.com/v0/b/fir-alta-aef46.appspot.com/o/home%2Fsection%201%2F2.png?alt=media&token=89d85c12-15c9-4bb4-8ed5-3dfab9cbff9e"
-                            alt="Slider" fetchPriority="low" loading="lazy"/>
-                    </div>
-                    <div className="card">
-                        <img
-                            src="https://firebasestorage.googleapis.com/v0/b/fir-alta-aef46.appspot.com/o/home%2Fsection%201%2F3.png?alt=media&token=4d484dc6-bef2-4ff9-869d-49c9b69cb7da"
-                            alt="Slider" fetchPriority="low" loading="lazy"/>
-                    </div>
-                    <div className="card">
-                        <img
-                            src="https://firebasestorage.googleapis.com/v0/b/fir-alta-aef46.appspot.com/o/home%2Fsection%201%2F4.png?alt=media&token=25065918-2dea-419b-bab8-f3855c1de729"
-                            alt="Slider" fetchPriority="low" loading="lazy"/>
-                    </div>
-                    <div className="card">
-                        <img
-                            src="https://firebasestorage.googleapis.com/v0/b/fir-alta-aef46.appspot.com/o/home%2Fsection%201%2F5.png?alt=media&token=5ee74fc5-b0c2-4897-a101-63b7816ba03d"
-                            alt="Slider" fetchPriority="low" loading="lazy"/>
-                    </div>
+                <div style={{marginTop: '4.2rem'}}>
+                    <FlipsterCarousel items={flipsterItems}/>
                 </div>
                 <Flex justify="center" className="w-full">
                     <button>
@@ -44,7 +31,7 @@ const Home = () => {
                 </Flex>
             </section>
             <section className="w-full bg-section" id="homeSection2">
-                <Row>
+                <Row gutter={[24, 24]}>
                     <Col xl={12} xs={24} sm={24} md={12} className="wrap-post">
                         <Flex vertical gap="3.2rem">
                             <Flex vertical gap="1.6rem">
@@ -72,15 +59,21 @@ const Home = () => {
                                 </ul>
                             </div>
                             <div>
-                                <Button type="primary">Xem chi tiết</Button>
+                                <Button  size="large" type="primary">Xem chi tiết</Button>
                             </div>
                         </Flex>
                     </Col>
-                    <Col xl={12} xs={24} sm={24} md={12} className="wrap-image">
-                        <Flex vertical>
-                            <div className="banner"></div>
-                            <div className="banner"></div>
-                        </Flex>
+                    <Col xs={24} sm={24} md={12} xl={12} xxl={12} className="wrap-banner">
+                        <div className="banner-item banner-top">
+                            <img
+                                src="https://firebasestorage.googleapis.com/v0/b/fir-alta-aef46.appspot.com/o/home%2Fsection%202%2F1.png?alt=media"
+                                alt="Banner"/>
+                        </div>
+                        <div className="banner-item banner-bottom">
+                            <img
+                                src="https://firebasestorage.googleapis.com/v0/b/fir-alta-aef46.appspot.com/o/home%2Fsection%202%2F2.png?alt=media"
+                                alt="Banner"/>
+                        </div>
                     </Col>
                 </Row>
             </section>
@@ -95,136 +88,19 @@ const Home = () => {
                 </div>
                 <Flex justify="center" className="wrap-card">
                     <Row className="w-75" gutter={[24, 24]}>
-                        <Col xl={8} md={8} sm={24} xs={24}>
-                            <Card
-                                cover={<img alt="example"
-                                            src="/img.png"/>}
-                            >
-                                <Flex vertical className="text-start" gap="1.2rem">
-                                    <Flex align="center" gap="0.4rem" className="post-owner">
-                                        Admin
-                                        <span style={{
-                                            width: '0.8rem',
-                                            height: '0.8rem',
-                                            background: '#03A600',
-                                            borderRadius: '50%',
-                                        }}></span>
-                                    </Flex>
-                                    <div className="post-title">Thông báo kết quả lựa chọn nhà thầu 2 màn hình Led P4
-                                        Outdoor Fullcolor
-                                    </div>
-                                    <div className="post-desc">Công ty Cổ phần Dịch vụ Du lịch Phú Thọ thông báo đến các
-                                        nhà thầu tham gia
-                                        chào hàng cạnh tranh Gói thầu: Cung cấp, lắp đặt 02 màn...
-                                    </div>
-                                </Flex>
-                                <Flex vertical gap="0.8rem">
-                                    <Flex className="post-tags" gap="0.2rem">
-                                        <span>Sự kiện</span>
-                                        <span>Thông báo</span>
-                                        <span>Tin tức</span>
-                                    </Flex>
-                                    <Flex gap="0.8rem" align="center">
-                                        <span className="post-view">10N lượt xem</span>
-                                        <span style={{
-                                            width: '0.3rem',
-                                            height: '0.3rem',
-                                            background: '#858585',
-                                            borderRadius: '50%'
-                                        }}></span>
-                                        <span className="post-date">20/02/2022</span>
-                                    </Flex>
-                                </Flex>
-                            </Card>
-                        </Col>
-                        <Col xl={8} md={8} sm={24} xs={24}>
-                            <Card
-                                cover={<img alt="example"
-                                            src="/img.png"/>}
-                            >
-                                <Flex vertical className="text-start" gap="1.2rem">
-                                    <Flex align="center" gap="0.4rem" className="post-owner">
-                                        Admin
-                                        <span style={{
-                                            width: '0.8rem',
-                                            height: '0.8rem',
-                                            background: '#03A600',
-                                            borderRadius: '50%',
-                                        }}></span>
-                                    </Flex>
-                                    <div className="post-title">Thông báo kết quả lựa chọn nhà thầu 2 màn hình Led P4
-                                        Outdoor Fullcolor
-                                    </div>
-                                    <div className="post-desc">Công ty Cổ phần Dịch vụ Du lịch Phú Thọ thông báo đến các
-                                        nhà thầu tham gia
-                                        chào hàng cạnh tranh Gói thầu: Cung cấp, lắp đặt 02 màn...
-                                    </div>
-                                </Flex>
-                                <Flex vertical gap="0.8rem">
-                                    <Flex className="post-tags" gap="0.2rem">
-                                        <span>Sự kiện</span>
-                                        <span>Thông báo</span>
-                                        <span>Tin tức</span>
-                                    </Flex>
-                                    <Flex gap="0.8rem" align="center">
-                                        <span className="post-view">10N lượt xem</span>
-                                        <span style={{
-                                            width: '0.3rem',
-                                            height: '0.3rem',
-                                            background: '#858585',
-                                            borderRadius: '50%'
-                                        }}></span>
-                                        <span className="post-date">20/02/2022</span>
-                                    </Flex>
-                                </Flex>
-                            </Card>
-                        </Col>
-                        <Col xl={8} md={8} sm={24} xs={24}>
-                            <Card
-                                cover={<img alt="example"
-                                            src="/img.png"/>}
-                            >
-                                <Flex vertical className="text-start" gap="1.2rem">
-                                    <Flex align="center" gap="0.4rem" className="post-owner">
-                                        Admin
-                                        <span style={{
-                                            width: '0.8rem',
-                                            height: '0.8rem',
-                                            background: '#03A600',
-                                            borderRadius: '50%',
-                                        }}></span>
-                                    </Flex>
-                                    <div className="post-title">Thông báo kết quả lựa chọn nhà thầu 2 màn hình Led P4
-                                        Outdoor Fullcolor
-                                    </div>
-                                    <div className="post-desc">Công ty Cổ phần Dịch vụ Du lịch Phú Thọ thông báo đến các
-                                        nhà thầu tham gia
-                                        chào hàng cạnh tranh Gói thầu: Cung cấp, lắp đặt 02 màn...
-                                    </div>
-                                </Flex>
-                                <Flex vertical gap="0.8rem">
-                                    <Flex className="post-tags" gap="0.2rem">
-                                        <span>Sự kiện</span>
-                                        <span>Thông báo</span>
-                                        <span>Tin tức</span>
-                                    </Flex>
-                                    <Flex gap="0.8rem" align="center">
-                                        <span className="post-view">10N lượt xem</span>
-                                        <span style={{
-                                            width: '0.3rem',
-                                            height: '0.3rem',
-                                            background: '#858585',
-                                            borderRadius: '50%'
-                                        }}></span>
-                                        <span className="post-date">20/02/2022</span>
-                                    </Flex>
-                                </Flex>
-                            </Card>
-                        </Col>
+                        {
+                            Array.from({length: 3}).map((_, index) => (
+                                <Col xl={8} md={8} sm={24} xs={24} key={"card-post-col-" + index}>
+                                    <CardPost size="large"/>
+                                </Col>
+                            ))
+                        }
                     </Row>
                 </Flex>
                 <Flex justify="center" className="w-full wrap-btn">
-                    <Button type="primary">Xem thêm bài viết</Button>
+                    <Link to="/bai-viet">
+                        <Button type="primary" size="large">Xem thêm bài viết</Button>
+                    </Link>
                 </Flex>
             </section>
             <section className="flex flex-col w-full text-center bg-section" id="homeSection4">
