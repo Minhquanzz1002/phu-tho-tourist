@@ -4,7 +4,9 @@
 //          SECTION 1               |
 //----------------------------------
 #documentSection1 {
-
+  margin: {
+    bottom: 20rem;
+  };
   .scroll-to-bottom {
 
     @media (max-width: 768px) {
@@ -119,9 +121,6 @@
 //----------------------------------
 #documentSection2 {
   border-radius: 2rem;
-  margin: {
-    top: 20rem;
-  };
   padding: 4.8rem 5.4rem;
   box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.20);
   background: rgba(255, 255, 255, 0.70);

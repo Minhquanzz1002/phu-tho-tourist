@@ -5,6 +5,7 @@ import {IconChevronsDown} from "@assets/icons";
 import FlipsterCarousel from "@shared/components/FlipsterCarousel";
 import {Link} from "react-router-dom";
 import CardPost from "@shared/components/CardPost";
+import {scrollToViewByElementId} from "@helper/function.tsx";
 
 const flipsterItems : string[] = [
     "1.jpg",
@@ -25,7 +26,7 @@ const Home = () => {
                     <FlipsterCarousel items={flipsterItems}/>
                 </div>
                 <Flex justify="center" className="w-full">
-                    <button>
+                    <button id="btnScroll" onClick={() => scrollToViewByElementId("btnScroll")}>
                         <IconChevronsDown/>
                     </button>
                 </Flex>

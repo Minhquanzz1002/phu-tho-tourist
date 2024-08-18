@@ -11,6 +11,7 @@
     size: 1.4rem;
     weight: 400;
   };
+  user-select: none;
   padding: 0 1.2rem;
   cursor: pointer;
   border: 1px solid transparent;
@@ -26,6 +27,7 @@
   background-color: #FFF;
 
   &:hover {
+    color: $bluePrimary500;
     border-color: $bluePrimary500;
   }
 }

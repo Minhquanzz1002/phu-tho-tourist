@@ -1,8 +1,19 @@
 import "./styles.scss";
 import {Col, Flex, Row} from "antd";
 import CardPost from "@shared/components/CardPost";
+import {useEffect, useState} from "react";
+import {IPost} from "../../../modules/posts/interface.ts";
+import {useSingleAsync} from "@hook/useAsync.tsx";
+import {getPosts} from "../../../modules/posts/repository.ts";
 
 const PostDetail = () => {
+    const [posts, setPosts] = useState<IPost[]>([]);
+    const loadPosts = useSingleAsync(getPosts);
+
+    useEffect(() => {
+        loadPosts.execute().then((res) => setPosts(res)).catch(() => setPosts([]));
+    }, []);
+
     return (
         <section className="w-full" id="postDetailSection1">
             <Flex vertical justify="start" className="w-full" gap="0.2rem">
@@ -74,9 +85,9 @@ const PostDetail = () => {
                 <div className="container-related-post__title">Bài viết liên quan</div>
                 <Row gutter={[24, 24]} style={{marginTop: '1.6rem'}}>
                     {
-                        Array.from({length: 4}).map((_, index)  => (
+                        posts.slice(0, 4).map((post, index)  => (
                             <Col key={"related-post-" + index} xs={24} md={24} lg={12} xl={8} xxl={6}>
-                                <CardPost size="medium"/>
+                                <CardPost post={post} size="medium"/>
                             </Col>
                         ))
                     }

@@ -15,7 +15,7 @@ const PolygonSvg = () => (
         </g>
         <defs>
             <filter id="filter0_bdi_272_68688" x="0.144043" y="-4" width="386.633" height="110"
-                    filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
                 <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                 <feGaussianBlur in="BackgroundImageFix" stdDeviation="2"/>
                 <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_272_68688"/>

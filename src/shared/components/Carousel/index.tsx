@@ -42,7 +42,6 @@ const Carousel = () => {
 
     const goTo = (slide: number) => {
         ref.current?.goTo(slide);
-        console.log(slide);
     }
 
     const beforeChange = () => {
@@ -52,7 +51,6 @@ const Carousel = () => {
     const afterChange = (slide: number) => {
         setIsAnimating(false);
         setCurrentSlide(slide);
-        console.log('after: ',slide);
     }
 
     return (
