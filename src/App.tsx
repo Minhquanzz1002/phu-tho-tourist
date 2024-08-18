@@ -1,6 +1,6 @@
 import {memo} from "react";
 import "@styles/styles.scss";
-import PublicPage from "./routers/component/PublicPage.tsx";
+import {PublicPage} from "./routers/component/PublicPage.tsx";
 import {ConfigProvider} from "antd";
 import dayjs from "dayjs";
 import relativeTime from 'dayjs/plugin/relativeTime';
