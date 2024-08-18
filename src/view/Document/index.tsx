@@ -1,52 +1,34 @@
 import "./styles.scss";
-import React from "react";
-import {Button, Col, Flex, Pagination, Row, Space} from "antd";
+import React, {useEffect, useState} from "react";
+import {Button, Col, Flex, Pagination, PaginationProps, Row, Space} from "antd";
 import {IconChevronsDown, IconDownload, IconFile, IconSetting} from "@assets/icons";
 import {Link} from "react-router-dom";
-import dayjs from "dayjs";
 import TitlePage from "@shared/components/TitlePage";
 import DateRangePicker from "@shared/components/DateRangePicker";
 import AutocompleteSearch from "@shared/components/AutocompleteSearch";
-
-
-interface IDocumentCategory {
-    image: string;
-    name: string;
-}
-
-interface IDocument {
-    name: string;
-    createdAt: Date;
-}
-
-const categories : IDocumentCategory[] = [
-    {image: '1.png?alt=media&token=a0722431-f3a0-450c-ac66-c16d46a8bf89', name: 'Báo cáo Tài Chính năm 2022-2023'},
-    {image: '2.png?alt=media&token=0d2f4400-068d-4305-a742-d576b079c12e', name: 'Báo cáo Tài Chính năm 2022-2023'},
-    {image: '3.png?alt=media&token=9fa7ae28-1e2f-414d-a420-3906c1e2cbc5', name: 'Báo cáo Tài Chính năm 2022-2023'},
-    {image: '4.png?alt=media&token=701d0a44-a299-43a7-b572-ee4a45076cf9', name: 'Báo cáo Tài Chính năm 2022-2023'},
-    {image: '5.png?alt=media&token=7c95ed59-bdc0-4073-abc9-fc0a81482cdd', name: 'Báo cáo Tài Chính năm 2022-2023'},
-    {image: '6.png?alt=media&token=41ee84df-348d-4edc-833e-5f69e1c46058', name: 'Báo cáo Tài Chính năm 2022-2023'},
-    {image: '7.png?alt=media&token=62288a9a-8a9e-490f-91e5-d0383c5f1643', name: 'Báo cáo Tài Chính năm 2022-2023'},
-    {image: '8.png?alt=media&token=4bfc9afb-03f3-4ed6-bb74-65d78ea79ee0', name: 'Báo cáo Tài Chính năm 2022-2023'},
-]
-
-const documents : IDocument[] = [
-    {name: "Khám phá Hội An - Việt Nam", createdAt: new Date(2024, 2, 3, 15, 30)},
-    {name: "Hải Phòng yêu cầu người dân không ra khỏi nhà sau 22h", createdAt: new Date(2024, 2, 3, 13, 30)},
-    {name: "Chuẩn bị gì sau khi tiêm vaccin Covid -19?", createdAt: new Date(2024, 2, 3, 15, 32)},
-    {name: "SNOW CHANNEL 1", createdAt: new Date("03/03/2024")},
-    {name: "Chuẩn bị gì sau khi tiêm vaccin Covid -19?", createdAt: new Date(2024, 2, 3, 15, 35)},
-    {name: "Hải Phòng yêu cầu người dân không ra khỏi nhà sau 22h", createdAt: new Date(2024, 2, 3, 11, 30)},
-    {name: "Chuẩn bị gì sau khi tiêm vaccin Covid -19?", createdAt: new Date(2024, 2, 3, 15, 37)},
-    {name: "Du lịch ở Tp.HCM đang như thế nào? 101", createdAt: new Date(2024, 2, 3, 15, 30)},
-    {name: "SNOW CHANNEL 1", createdAt: new Date(2024, 2, 3, 15, 30)},
-    {name: "Hải Phòng yêu cầu người dân không ra khỏi nhà sau 22h", createdAt: new Date(2024, 2, 3, 15, 30)},
-]
+import {useSingleAsync} from "@hook/useAsync.tsx";
+import {getDocuments} from "../../modules/documents/repository.ts";
+import {IDocumentCategory} from "../../modules/documentCategories/interface.ts";
+import {getDocumentCategories} from "../../modules/documentCategories/repository.ts";
+import {formatDate, scrollToViewByElementId} from "@helper/function.tsx";
+import {IDocument} from "../../modules/documents/interface.ts";
 
 
 const Document = () => {
-    const formatDate = (date: Date) => {
-        return dayjs(date).format('DD/MM/YY HH:mm');
+    const [documents, setDocuments] = useState<IDocument[]>([]);
+    const [categories, setCategories] = useState<IDocumentCategory[]>([]);
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const loadDocuments = useSingleAsync(getDocuments);
+    const loadDocumentCategories = useSingleAsync(getDocumentCategories);
+    const pageSize: number = 10;
+
+    useEffect(() => {
+        loadDocumentCategories.execute().then((res) => setCategories(res)).catch(() => setCategories([]));
+        loadDocuments.execute().then((res) => setDocuments(res)).catch(() => setDocuments([]));
+    }, []);
+
+    const onPageChange: PaginationProps['onChange'] = (page: number) => {
+        setCurrentPage(page);
     }
 
     return (
@@ -55,11 +37,13 @@ const Document = () => {
                 <TitlePage title="TÀI LIỆU"/>
                 <Row gutter={[22, 22]} className="wrap-cards">
                     {
-                        categories.map((category, index) => (
-                            <Col xs={8} sm={8} lg={6} xl={6} key={"col-" + index}>
+                        categories.map((category) => (
+                            <Col xs={8} sm={8} lg={6} xl={6} key={category.id}>
                                 <Link to="/bai-viet">
                                     <Flex vertical align="center" className="card">
-                                        <img src={"https://firebasestorage.googleapis.com/v0/b/fir-alta-aef46.appspot.com/o/document%2Fsection%201%2F" + category.image} alt="Image" loading="lazy"/>
+                                        <img
+                                            src={category.image}
+                                            alt="Image" loading="lazy"/>
                                         <IconFile className="icon"/>
                                         <div className="title">{category.name}</div>
                                         <div className="card-text">Click để xem</div>
@@ -70,7 +54,8 @@ const Document = () => {
                     }
                 </Row>
                 <div>
-                    <button className="scroll-to-bottom">
+                    <button id="btnScroll" className="scroll-to-bottom"
+                            onClick={() => scrollToViewByElementId('btnScroll')}>
                         <IconChevronsDown/>
                     </button>
                 </div>
@@ -100,19 +85,19 @@ const Document = () => {
                 <table className="w-full">
                     <thead>
                     <tr>
-                    <th>STT</th>
-                            <th>Tên tài liệu</th>
-                            <th>Ngày tạo</th>
-                            <th>Tải tài liệu</th>
-                        </tr>
+                        <th>STT</th>
+                        <th>Tên tài liệu</th>
+                        <th>Ngày tạo</th>
+                        <th>Tải tài liệu</th>
+                    </tr>
                     </thead>
                     <tbody>
                     {
-                        documents.map((doc, index) => (
-                            <tr key={"tbody-" + index}>
-                                <td>{index + 1}</td>
+                        documents.slice((currentPage - 1) * pageSize, currentPage * pageSize).map((doc, index) => (
+                            <tr key={"tbody-" + doc.id}>
+                                <td>{(currentPage - 1) * pageSize + index + 1}</td>
                                 <td>
-                                    <Flex vertical gap="0.8rem">
+                                <Flex vertical gap="0.8rem">
                                         <div className="document-name">{doc.name}</div>
                                         <div className="document-created-date">{formatDate(doc.createdAt)}</div>
                                     </Flex>
@@ -131,10 +116,10 @@ const Document = () => {
 
                 <div className="w-full flex table-footer">
                     <Space size="small" className="wrap-docs-per-page">
-                        Hiển thị <span className="docs-per-page">10</span> câu trả lời trong mỗi trang
+                        Hiển thị <span className="docs-per-page">{pageSize}</span> câu trả lời trong mỗi trang
                     </Space>
 
-                    <Pagination  total={100} showSizeChanger={false}  align="center"/>
+                    <Pagination onChange={onPageChange} total={documents.length} showSizeChanger={false} align="center"/>
                 </div>
 
             </section>

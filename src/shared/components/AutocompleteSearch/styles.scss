@@ -1,0 +1,75 @@
+@import "../../../view/styles/variable";
+@import "../../../view/styles/mixin";
+
+.container-autocomplete-search {
+  position: relative;
+
+  &__dropdown {
+    position: absolute;
+    top: 110%;
+    width: 100%;
+    background-color: #FFF;
+    border-radius: 5px;
+    max-height: 25rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1.2rem 0.7rem;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: $gray50;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $bluePrimary300;
+      border-radius: 10px;
+    }
+
+    &-title {
+      padding-left: 0.8rem;
+      margin-bottom: 1rem;
+      @include font-roboto(1.4rem, $gray600, 600);
+    }
+
+    &-btn-clear {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100%;
+      width: 2rem;
+      height: 2rem;
+
+      &:hover {
+        background-color: $gray200;
+      }
+    }
+
+    &-item {
+      user-select: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $gray50;
+        border-radius: 0.8rem;
+      }
+    }
+
+    &-content {
+      @include font-roboto(1.4rem, $gray500, 400);
+      width: 100%;
+    }
+
+    &-icon {
+      background-color: $gray200;
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

@@ -1,9 +1,13 @@
 import "./styles.scss";
 import {Card, Col, Flex, Row} from "antd";
 import {Link} from "react-router-dom";
+import {IPost} from "../../../modules/posts/interface.ts";
+import React from "react";
+import {formatViews} from "@helper/function.tsx";
 
 interface ICardPostProps {
     size: "small" | "medium" | "large";
+    post?: IPost;
 }
 
 const CardPostSmall = () => {
@@ -34,7 +38,7 @@ const CardPostSmall = () => {
     )
 }
 
-const CardPostMedium = () => {
+const CardPostMedium : React.FC<{post: IPost}> = ({post}) => {
     return (
         <Link to="/bai-viet/chi-tiet">
             <Card className="container-card-post-medium"
@@ -43,29 +47,31 @@ const CardPostMedium = () => {
                           <div>Click để xem</div>
                           <img alt="Card Item"
                                loading="lazy"
-                               src="https://firebasestorage.googleapis.com/v0/b/fir-alta-aef46.appspot.com/o/home%2Fsection%204%2F2.png?alt=media&token=30dbf7ce-431a-49ee-a0c1-25d04baa94c5"/>
+                               src={post.image}/>
                       </div>
                   }
             >
                 <Flex vertical gap="small">
                     <Flex align="center" gap="small">
-                        <div className="post-author">Admin</div>
+                        <div className="post-author">{post.author}</div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6" fill="none">
                             <circle cx="3" cy="3" r="3" fill="#03A600"/>
                         </svg>
                     </Flex>
-                    <h4>Thông báo: đấu giá giữ xe tại CVHH Đầm Sen</h4>
+                    <h4>{post.title}</h4>
                     <Flex align="center" gap="small" className="post-tags">
-                        <div>Sự kiện</div>
-                        <div>Thông báo</div>
-                        <div>Tin tức</div>
+                        {
+                            post.topics.map((topic) => (
+                                <div>{topic}</div>
+                            ))
+                        }
                     </Flex>
                     <Flex align="center" gap="small" className="post-view">
-                        <div>10N lượt xem</div>
+                        <div>{formatViews(post.views)} lượt xem</div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="3" height="4" viewBox="0 0 3 4" fill="none">
                             <circle cx="1.5" cy="2" r="1.5" fill="#858585"/>
                         </svg>
-                        <div>20/02/2022</div>
+                        <div>{post.publishedAt.toLocaleDateString()}</div>
                     </Flex>
                 </Flex>
             </Card>
@@ -128,7 +134,7 @@ const CardPost = (props: ICardPostProps) => {
     if (props.size === "small") {
         return <CardPostSmall/>;
     } else if (props.size === "medium") {
-        return <CardPostMedium/>;
+        return <CardPostMedium  post={props.post}/>;
     } else {
         return (
             <CardPostLarge/>
