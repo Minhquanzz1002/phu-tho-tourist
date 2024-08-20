@@ -1,5 +1,6 @@
 import "./styles.scss";
-import {Col, DatePicker, Flex, Input, Radio, Row, Space} from "antd";
+import {Flex} from "antd";
+import FormApplication from "@view/Recruitment/Detail/components/FormApplication";
 
 const RecruitmentDetail = () => {
     return (
@@ -159,91 +160,7 @@ const RecruitmentDetail = () => {
                     </tbody>
                 </table>
                 <h2>Ứng tuyển Online</h2>
-                <form>
-                    <Row gutter={50}>
-                        <Col xs={24} md={24} lg={24} xl={12} xxl={12}>
-                            <Flex gap="1.2rem" vertical>
-                                <div>
-                                    <label className="label">Họ tên</label>
-                                    <Input placeholder="Nguyễn Văn A"/>
-                                </div>
-                                <div>
-                                    <label className="label">Năm sinh</label>
-                                    <DatePicker className="w-full" placeholder="12-12-2000" suffixIcon=""/>
-                                </div>
-                                <div>
-                                    <label className="label">Nơi ở hiện nay</label>
-                                    <Input placeholder="123 Âu Cơ, Phường 9, Tân Bình, TP HCM"/>
-                                </div>
-                                <div>
-                                    <label className="label">Email</label>
-                                    <Input type="email" placeholder="Nguyenvana@gmail.com"/>
-                                </div>
-                                <div>
-                                    <label className="label">Trình độ</label>
-                                    <Input placeholder="Đại học"/>
-                                </div>
-                                <div>
-                                    <label className="label">Bạn có sẵn sàng đi công tác dài ngày</label>
-                                    <Radio.Group value={1}>
-                                        <Space>
-                                            <Radio value={1}>Có</Radio>
-                                            <Radio value={2}>Tùy thời điểm</Radio>
-                                            <Radio value={3}>Không</Radio>
-                                        </Space>
-                                    </Radio.Group>
-                                </div>
-                            </Flex>
-                        </Col>
-                        <Col xs={24} md={24} lg={24} xl={12} xxl={12}>
-                            <Flex gap="1.2rem" vertical>
-                                <div>
-                                    <label className="label">Giới tính</label>
-                                    <Radio.Group value={1}>
-                                        <Space>
-                                            <Radio value={1}>Nam</Radio>
-                                            <Radio value={2}>Nữ</Radio>
-                                        </Space>
-                                    </Radio.Group>
-                                </div>
-                                <div>
-                                    <label className="label">Nơi sinh</label>
-                                    <Input placeholder="Phường 6, Quận Tân Bình, TP HCM"/>
-                                </div>
-                                <div>
-                                    <label className="label">Điện thoại</label>
-                                    <Input placeholder="0123456789"/>
-                                </div>
-                                <div>
-                                    <label className="label">Facebook cá nhân</label>
-                                    <Input placeholder="facebook.com.vn"/>
-                                </div>
-                                <div>
-                                    <label className="label">Đính kèm CV</label>
-                                    <Input type="file" placeholder="Không có tập tin nào được chọn"/>
-                                </div>
-                                <div>
-                                    <label className="label">Bạn có sẵn sàng làm thêm giờ</label>
-                                    <Radio.Group value={1}>
-                                        <Space>
-                                            <Radio value={1}>Có</Radio>
-                                            <Radio value={2}>Tùy thời điểm</Radio>
-                                            <Radio value={3}>Không</Radio>
-                                        </Space>
-                                    </Radio.Group>
-                                </div>
-                            </Flex>
-                        </Col>
-                    </Row>
-                    <div>
-                        <label className="label">Những nơi đã từng làm việc trước đây (ghi rõ vị trí)</label>
-                        <Input.TextArea rows={4} placeholder="Những nơi đã từng làm việc trước đây"/>
-                    </div>
-                    <div>
-                        <label className="label">Kinh nghiệm bản thân</label>
-                        <Input.TextArea rows={4} placeholder="Kinh nghiệm bản thân"/>
-                    </div>
-                </form>
+                <FormApplication/>
             </Flex>
         </section>
     );

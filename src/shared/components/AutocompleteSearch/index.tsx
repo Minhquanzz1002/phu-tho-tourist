@@ -1,7 +1,7 @@
 import "./styles.scss";
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {IconSearch} from "@assets/icons";
-import {Flex, Input, List} from "antd";
+import {Flex, Input, InputProps, List} from "antd";
 import useClickOutside from "@hook/useClickOutside.tsx";
 import {useLocalStorage} from "@hook/useLocalStorage.tsx";
 
@@ -19,13 +19,25 @@ enum DropdownState {
     None = 'None'
 }
 
-export const AutocompleteSearch = () => {
-    const [searchTerm, setSearchTerm] = useState<string>("");
+interface AutoCompleteSearchProps extends InputProps {
+    value?: string;
+    onChange?: (value: any) => void;
+}
+
+const AutocompleteSearch = (props: AutoCompleteSearchProps) => {
+    const [searchValue, setSearchValue] = useState<string>("");
     const [suggestions, setSuggestions] = useState<string[]>([]);
     const [searchHistory, setSearchHistory] = useLocalStorage<string[]>("searchHistory", []);
     const [dropdownState, setDropdownState] = useState<DropdownState>(DropdownState.None);
     const containerRef = useRef<HTMLDivElement>(null);
     const staticSuggestions = ["Nhân viên phục  vụ", "Nhân viên bảo vệ", "Nhân viên thiết  kế", "Nhân viên bảo trì", "Nhân viên trợ lý"];
+
+    useEffect(() => {
+        if (searchValue === props.value || props.value == null) {
+            return;
+        }
+        setSearchValue(props.value);
+    }, [props.value]);
 
     useClickOutside<HTMLDivElement>(containerRef, () => setDropdownState(DropdownState.None));
 
@@ -37,7 +49,10 @@ export const AutocompleteSearch = () => {
     }
 
     const handleSearchChange = (value: string) => {
-        setSearchTerm(value);
+        setSearchValue(value);
+        if (props.onChange) {
+            props.onChange(value);
+        }
         if (value !== '') {
             setDropdownState(DropdownState.Suggestion);
         } else {
@@ -48,8 +63,8 @@ export const AutocompleteSearch = () => {
 
     const handleClickSearchInput = (e: React.MouseEvent) => {
         e.preventDefault();
-        if (searchTerm) {
-            setSuggestions(filterSuggestions(searchTerm));
+        if (searchValue) {
+            setSuggestions(filterSuggestions(searchValue));
             setDropdownState(DropdownState.Suggestion);
         } else {
             setDropdownState(DropdownState.History);
@@ -57,21 +72,24 @@ export const AutocompleteSearch = () => {
     }
 
     const handleClickDropdownItem = (item: string) => {
-        setSearchTerm(item);
+        setSearchValue(item);
+        if (props.onChange) {
+            props.onChange(item);
+        }
         setDropdownState(DropdownState.None);
     }
 
-    const handleRemoveHistory = (e: React.MouseEvent,historyToRemove: string) => {
+    const handleRemoveHistory = (e: React.MouseEvent, historyToRemove: string) => {
         e.stopPropagation();
         setSearchHistory(prevHistory => prevHistory.filter(item => item !== historyToRemove));
     }
 
     const handleSearch = () => {
         setDropdownState(DropdownState.None);
-        if (searchTerm.trim() === "") return;
+        if (searchValue.trim() === "") return;
 
         setSearchHistory(prevHistory => {
-            const updatedHistory: string[] = [searchTerm, ...prevHistory.filter(item => item !== searchTerm)].slice(0, 5);
+            const updatedHistory: string[] = [searchValue, ...prevHistory.filter(item => item !== searchValue)].slice(0, 5);
             return updatedHistory;
         })
     }
@@ -106,10 +124,11 @@ export const AutocompleteSearch = () => {
     return (
         <div className="container-autocomplete-search" ref={containerRef}>
             <Input id="search" placeholder="Tìm kiếm" allowClear
+                   {...props}
                    prefix={<IconSearch style={{color: '#0054A6'}}/>}
                    onClick={handleClickSearchInput}
                    onPressEnter={handleSearch}
-                   onChange={e => handleSearchChange(e.target.value)} value={searchTerm}/>
+                   onChange={e => handleSearchChange(e.target.value)} value={searchValue}/>
             {
                 dropdownState !== DropdownState.None && (
                     <div className="container-autocomplete-search__dropdown">

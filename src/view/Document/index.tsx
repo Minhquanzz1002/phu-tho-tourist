@@ -18,14 +18,20 @@ const Document = () => {
     const [documents, setDocuments] = useState<IDocument[]>([]);
     const [categories, setCategories] = useState<IDocumentCategory[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
-    const loadDocuments = useSingleAsync(getDocuments);
+    const [searchValue, setSearchValue] = useState<string>("");
+    const loadDocuments = useSingleAsync(() => getDocuments(startDate, endDate));
     const loadDocumentCategories = useSingleAsync(getDocumentCategories);
+    const [startDate, setStartDate] = useState<Date>();
+    const [endDate, setEndDate] = useState<Date>(new Date());
     const pageSize: number = 10;
 
     useEffect(() => {
         loadDocumentCategories.execute().then((res) => setCategories(res)).catch(() => setCategories([]));
-        loadDocuments.execute().then((res) => setDocuments(res)).catch(() => setDocuments([]));
     }, []);
+
+    useEffect(() => {
+        loadDocuments.execute().then((res) => setDocuments(res)).catch(() => setDocuments([]));
+    }, [startDate, endDate]);
 
     const onPageChange: PaginationProps['onChange'] = (page: number) => {
         setCurrentPage(page);
@@ -35,18 +41,18 @@ const Document = () => {
         <React.Fragment>
             <section className="w-full text-center" id="documentSection1">
                 <TitlePage title="TÀI LIỆU"/>
-                <Row gutter={[22, 22]} className="wrap-cards">
+                <Row gutter={[22, 22]} className="categories">
                     {
                         categories.map((category) => (
-                            <Col xs={8} sm={8} lg={6} xl={6} key={category.id}>
+                            <Col xs={8} sm={8} lg={6} xl={6} key={category.id} className="categories__item">
                                 <Link to="/bai-viet">
-                                    <Flex vertical align="center" className="card">
+                                    <Flex vertical align="center" justify="center" className="categories__content">
                                         <img
                                             src={category.image}
                                             alt="Image" loading="lazy"/>
-                                        <IconFile className="icon"/>
-                                        <div className="title">{category.name}</div>
-                                        <div className="card-text">Click để xem</div>
+                                        <IconFile className="categories__icon"/>
+                                        <div className="categories__title">{category.name}</div>
+                                        <div className="categories__text">Click để xem</div>
                                     </Flex>
                                 </Link>
                             </Col>
@@ -64,12 +70,13 @@ const Document = () => {
                 <Flex justify="space-between" align="center" className="w-full" id="searchBar">
                     <div>
                         <label htmlFor="startDatePicker">Ngày tạo</label>
-                        <DateRangePicker/>
+                        <DateRangePicker onChangeStartDate={(date) => setStartDate(date)} endDate={endDate}
+                                         onChangeEndDate={(date) => setEndDate(date)}/>
                     </div>
 
                     <div>
                         <label htmlFor="search">Từ khóa</label>
-                        <AutocompleteSearch/>
+                        <AutocompleteSearch value={searchValue} onChange={(value) => setSearchValue(value)}/>
                     </div>
                 </Flex>
 
@@ -97,7 +104,7 @@ const Document = () => {
                             <tr key={"tbody-" + doc.id}>
                                 <td>{(currentPage - 1) * pageSize + index + 1}</td>
                                 <td>
-                                <Flex vertical gap="0.8rem">
+                                    <Flex vertical gap="0.8rem">
                                         <div className="document-name">{doc.name}</div>
                                         <div className="document-created-date">{formatDate(doc.createdAt)}</div>
                                     </Flex>
@@ -119,7 +126,8 @@ const Document = () => {
                         Hiển thị <span className="docs-per-page">{pageSize}</span> câu trả lời trong mỗi trang
                     </Space>
 
-                    <Pagination onChange={onPageChange} total={documents.length} showSizeChanger={false} align="center"/>
+                    <Pagination onChange={onPageChange} total={documents.length} showSizeChanger={false}
+                                align="center"/>
                 </div>
 
             </section>

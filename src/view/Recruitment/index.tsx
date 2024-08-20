@@ -10,6 +10,7 @@ import CardJobPosting from "@view/Recruitment/components/CardJobPosting";
 import {IJobPosting} from "../../modules/jobPosting/interface.ts";
 import {useSingleAsync} from "@hook/useAsync.tsx";
 import {getJobPostings} from "../../modules/jobPosting/repository.ts";
+import {Sheet} from "react-modal-sheet";
 
 // const sampleJobPostings: IJobPosting[] = [
 //     {
@@ -137,21 +138,21 @@ const Recruitment = () => {
     const [jobPostings, setJobPostings] = useState<IJobPosting[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const pageSize = 9;
-    const loadJobPostings = useSingleAsync(getJobPostings);
+    const loadJobPostings = useSingleAsync(() => getJobPostings(selectedFilters.field, selectedFilters.employmentType, selectedFilters.location));
+    const [selectedFilters, setSelectedFilters] = useState<{ [key in FilterType]: string[] }>({
+        field: [],
+        location: [],
+        employmentType: []
+    });
+    const [isOpenBottomSheet, setIsOpenBottomSheet] = useState<boolean>(false);
 
     useEffect(() => {
         loadJobPostings.execute().then((res) => setJobPostings(res)).catch(() => setJobPostings([]));
-    }, []);
+    }, [selectedFilters]);
 
     const onPageChange: PaginationProps['onChange'] = (page: number) => {
         setCurrentPage(page);
     }
-
-    const [selectedFilters, setSelectedFilters] = useState<{ [key in FilterType]: string[] }>({
-        field: [fields[0]],
-        location: [locations[0]],
-        employmentType: [employmentTypes[0]]
-    });
 
     const handleFilterClick = (type: FilterType, item: string) => {
         setSelectedFilters(prevState => ({
@@ -221,7 +222,7 @@ const Recruitment = () => {
                             <div style={{flex: 1}}>
                                 <AutocompleteSearch/>
                             </div>
-                            <Button>
+                            <Button htmlType="button" onClick={() => setIsOpenBottomSheet(true)}>
                                 <IconSetting/>
                             </Button>
                         </Flex>
@@ -243,12 +244,71 @@ const Recruitment = () => {
                     <Col xs={24} sm={24} lg={18} xl={18}>
                         <Flex justify="center">
                             <div className="wrap-pagination">
-                                <Pagination pageSize={pageSize} onChange={onPageChange} total={jobPostings.length} showSizeChanger={false} align="center"/>
+                                <Pagination pageSize={pageSize} onChange={onPageChange} total={jobPostings.length}
+                                            showSizeChanger={false} align="center"/>
                             </div>
                         </Flex>
                     </Col>
                 </Row>
             </section>
+
+            <Sheet isOpen={isOpenBottomSheet} onClose={() => setIsOpenBottomSheet(false)} detent="content-height">
+                <Sheet.Container>
+                    <Sheet.Header/>
+                    <Sheet.Content>
+                        <div style={{padding: '0.8rem 2.4rem 3.2rem'}}>
+                            <Flex gap="small" align="center">
+                                <Flex justify="center" align="center" className="filter-icon"><IconBriefcase/></Flex>
+                                <div>Lĩnh vực</div>
+                            </Flex>
+                            <Flex wrap gap="small" style={{marginTop: '2rem'}}>
+                                {
+                                    fields.map((field: string, index: number) => (
+                                        <Chip key={"chip-field-" + index} label={field}
+                                              style={{backgroundColor: 'rgba(230, 238, 247, 1)'}}
+                                              onClick={() => handleFilterClick('field', field)}
+                                              variant={selectedFilters['field'].includes(field) ? 'primary' : 'outline-primary'}/>
+                                    ))
+                                }
+                            </Flex>
+
+                            <Flex gap="small" align="center" style={{marginTop: '2rem'}}>
+                                <Flex justify="center" align="center" className="filter-icon"><IconIdCard/></Flex>
+                                <div>Hình thức làm việc</div>
+                            </Flex>
+
+                            <Flex wrap gap="small" style={{marginTop: '2rem'}}>
+                                {
+                                    employmentTypes.map((employmentType: string, index: number) => (
+                                        <Chip key={"chip-employment-type-" + index} label={employmentType}
+                                              style={{backgroundColor: 'rgba(230, 238, 247, 1)'}}
+                                              onClick={() => handleFilterClick('employmentType', employmentType)}
+                                              variant={selectedFilters['employmentType'].includes(employmentType) ? 'primary' : 'outline-primary'}/>
+                                    ))
+                                }
+                            </Flex>
+
+                            <Flex gap="small" style={{marginTop: '2rem'}}>
+                                <Flex justify="center" align="center" className="filter-icon"><MapPinIcon
+                                    style={{color: '#0054A6'}}/></Flex>
+                                <div className="filter-group">Nơi làm việc</div>
+                            </Flex>
+
+                            <Flex wrap gap="small" style={{marginTop: '2rem'}}>
+                                {
+                                    locations.map((location: string, index: number) => (
+                                        <Chip key={"chip-location-" + index} label={location}
+                                              style={{backgroundColor: 'rgba(230, 238, 247, 1)'}}
+                                              onClick={() => handleFilterClick('location', location)}
+                                              variant={selectedFilters['location'].includes(location) ? 'primary' : 'outline-primary'}/>
+                                    ))
+                                }
+                            </Flex>
+                        </div>
+                    </Sheet.Content>
+                </Sheet.Container>
+                <Sheet.Backdrop onTap={() => setIsOpenBottomSheet(false)}/>
+            </Sheet>
         </React.Fragment>
     );
 };

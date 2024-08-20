@@ -22,28 +22,13 @@
     }
   }
 
-  .wrap-cards {
+  .categories {
     margin-top: 4.8rem;
     margin-bottom: 3.6rem;
     padding: {
       left: 15%;
       right: 15%;
     };
-
-    .ant-col:nth-child(7) {
-      display: block;
-      @media (max-width: 768px) {
-        display: none;
-      }
-    }
-
-    .ant-col:nth-child(8) {
-
-      display: block;
-      @media (max-width: 768px) {
-        display: none;
-      }
-    }
 
     @media (max-width: 768px) {
       padding: {
@@ -52,7 +37,45 @@
       };
     }
 
-    .card {
+    &__item {
+      &:nth-child(7), &:nth-child(8) {
+        display: block;
+        @media (max-width: 768px) {
+          display: none;
+        }
+      }
+    }
+
+    &__icon {
+      z-index: 2;
+      position: relative;
+    }
+
+    &__title {
+      position: relative;
+      font: {
+        size: 1.4rem;
+        weight: 700;
+        family: "Roboto", sans-serif;
+      };
+      color: white;
+      user-select: none;
+    }
+
+    &__text {
+      visibility: hidden;
+      position: absolute;
+      bottom: 2rem;
+      font: {
+        size: 1.4rem;
+        weight: 700;
+        family: "Roboto", sans-serif;
+      };
+      color: white;
+      user-select: none;
+    }
+
+    &__content {
       overflow: hidden;
       position: relative;
       height: 26.1rem;
@@ -69,14 +92,8 @@
         transition: all 0.2s ease-out;
       }
 
-      &:hover > .card-text {
-        display: block;
-      }
-
-      .icon {
-        margin-top: 5rem;
-        z-index: 2;
-        position: relative;
+      &:hover > .categories__text {
+        visibility: visible;
       }
 
       img {
@@ -86,31 +103,6 @@
         height: 100%;
         width: 100%;
         z-index: 0;
-      }
-
-      .title {
-        position: relative;
-        font: {
-          size: 1.4rem;
-          weight: 700;
-          family: "Roboto", sans-serif;
-        };
-        color: white;
-        user-select: none;
-      }
-
-      .card-text {
-        display: none;
-        margin-top: auto;
-        margin-bottom: 1.5rem;
-        position: relative;
-        font: {
-          size: 1.4rem;
-          weight: 700;
-          family: "Roboto", sans-serif;
-        };
-        color: white;
-        user-select: none;
       }
     }
   }

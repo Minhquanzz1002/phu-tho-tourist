@@ -1,0 +1,9 @@
+@import "../../../../styles/variable";
+@import "../../../../styles/mixin";
+.form-application {
+  .label {
+    @include font-roboto(1.8rem, $gray600, 600);
+  }
+
+
+}

@@ -1,9 +1,8 @@
 @import "../../../view/styles/variable";
 @import "../../../view/styles/mixin";
 
-.container-topic-post {
+.topic-post {
   padding: 2rem;
-  width: 100%;
   border-radius: 0.8rem;
   cursor: pointer;
   background: #FFF;
@@ -16,6 +15,8 @@
 
   div:last-child {
     @include font-roboto-semi-bold(2rem, $bluePrimary300);
+    text-overflow: ellipsis;
+    @include line-clamp(1);
   }
 
   &:hover div:last-child {

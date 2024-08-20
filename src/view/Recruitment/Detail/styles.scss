@@ -75,12 +75,4 @@
       @include font-roboto(1.6rem, $gray700,400);
     }
   }
-
-  form {
-    .label {
-      @include font-roboto(1.8rem, $gray600, 600);
-      margin-bottom: 0.8rem;
-      display: block;
-    }
-  }
 }

@@ -1,4 +1,5 @@
 @import "../styles/variable";
+@import "../styles/mixin";
 //----------------------------------
 //          SECTION 1               |
 //----------------------------------
@@ -28,43 +29,6 @@
     font-weight: 400;
     font-style: italic;
   }
-
-  //.slider {
-  //  margin-top: 4.2rem;
-  //  height: 53.2rem;
-  //  display: flex;
-  //  justify-content: center;
-  //
-  //  .card:nth-child(3) {
-  //    z-index: 3;
-  //  }
-  //
-  //  .card:nth-child(1), .card:nth-child(5) {
-  //    padding-top: 9.02rem;
-  //    z-index: 1;
-  //  }
-  //
-  //  .card:nth-child(1) {
-  //    transform: translateX(9.039rem);
-  //  }
-  //
-  //  .card:nth-child(5) {
-  //    transform: translateX(-9.039rem);
-  //  }
-  //
-  //  .card:nth-child(2), .card:nth-child(4) {
-  //    padding-top: 2.969rem;
-  //    z-index: 2;
-  //  }
-  //
-  //  .card:nth-child(2) {
-  //    transform: translateX(2.952rem);
-  //  }
-  //
-  //  .card:nth-child(4) {
-  //    transform: translateX(-2.952rem);
-  //  }
-  //}
 
   button {
     border: none;
@@ -240,6 +204,8 @@
       .card-desc {
         color: $gray500;
         line-height: 2.1rem;
+        text-overflow: ellipsis;
+        @include line-clamp(4);
         font: {
           size: 1.6rem;
           weight: 400;

@@ -22,3 +22,7 @@ export const formatViews = (views: number) : string => {
     const  thousands = Math.floor((views / 1000));
     return `${thousands}N`;
 }
+
+export const formatToLocaleDateString = (date: Date) => {
+    return dayjs(date).format('DD/MM/YYYY');
+}
