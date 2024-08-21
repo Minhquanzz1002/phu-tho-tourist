@@ -1,3 +1,4 @@
+@import "../../../view/styles/mixin";
 .flipster {
   margin: 0 auto;
   display: block;
@@ -18,6 +19,11 @@
     height: 56.5rem;
     width: 40rem;
     margin: 0 auto;
+
+    @include for-size(md, down) {
+      height: 31rem;
+      width: 22rem;
+    }
 
 
     .flip-item {

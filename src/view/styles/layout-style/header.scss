@@ -1,128 +1,120 @@
-#navbar {
+@import "../mixin";
+
+.header {
   display: flex;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-}
-
-#navbarMobi {
-  display: none;
-
-  @media (max-width: 768px) {
-    display: flex;
-  }
-}
-
-#header {
-  display: flex;
-  background: #002F5CCC;
-  position: fixed;
-  height: 12rem;
-  width: 100%;
   justify-content: center;
-  align-items: center;
+  position: fixed;
+  width: 100%;
+  background-color: rgba(0, 47, 92, 0.80);
   border-bottom: 1px solid white;
+  height: 12rem;
+  gap: 8rem;
   z-index: 4;
 
-  @media (max-width: 768px) {
-    padding: 1rem 1.6rem;
+  @include for-size(md, down) {
     height: auto;
-    border-bottom: none;
-    backdrop-filter: blur(2px);
+    padding: 0.6rem 1.6rem;
   }
-}
 
-#navbar .active {
-  color: rgba(153, 255, 255, 1);
-}
+  &__navbar {
 
-#navbar .active::after {
-  content: '';
-  position: absolute;
-  width: 100% !important;
-  height: 1px;
-  background: currentColor;
-  left: 0;
-  bottom: 1.2rem;
-}
+    @include for-size(md, down) {
+      display: none;
+    }
+  }
 
-.header__menu-item {
-  position: relative;
-  font-size: 2rem;
-  font-family: "Philosopher", sans-serif;
-}
+  &__menu-item {
+    @include font-philosopher(2rem, #FFF, 700);
+    position: relative;
+    height: fit-content;
+    text-wrap: nowrap;
 
-#navbar .header__menu-item::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 1px;
-  background: currentColor;
-  left: 0;
-  bottom: 1.2rem;
-}
+    &::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: currentColor;
+      opacity: 0;
+      bottom: 1.2rem;
+      left: 0;
+    }
 
-#navbar .header__menu-item:hover::after {
-  width: 100%;
-}
+    &:hover::after, &.active::after {
+      opacity: 1;
+    }
 
-#menuMobile {
-  position: fixed;
-  height: 100vh;
-  width: 100%;
-  top: 0;
-  left: 0;
-  background: rgba(0, 37, 73, 0.80);
-  z-index: 20;
-  backdrop-filter: blur(9.5px);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 1rem 1.6rem;
+    &.active {
+      color: rgba(153, 255, 255, 1);
+    }
+  }
 
-  @media (min-width: 768px) {
+  &__mobile-navbar {
     display: none;
+
+    @include for-size(md, down) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
   }
-}
 
-#closeMenuBtn {
-  border: none;
-  height: 4rem;
-  width: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  background: #FFF;
-  cursor: pointer;
-}
+  &__mobile-menu {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 37, 73, 0.80);
+    z-index: 10;
+    backdrop-filter: blur(9.5px);
+    -webkit-backdrop-filter: blur(9.5px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-#menuMobile .header__menu-item::after  {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 1px;
-  background: currentColor;
-  left: 0;
-  bottom: -0.5rem;
-}
+    &-header {
+      padding: 0.8rem;
+      width: 100%;
+    }
 
-#menuMobile .header__menu-item:hover::after {
-  width: 100%;
-}
+    &-close-btn {
+      height: 4rem;
+      width: 4rem;
+      background-color: #FFF;
+      box-shadow: 0 2.857px 2.857px 0 rgba(0, 0, 0, 0.25);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-#menuMobile .active {
-  color: rgba(153, 255, 255, 1);
-}
+    &-items {
+      margin-top: 8rem;
+    }
 
-#menuMobile  .active::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  background: currentColor;
-  left: 0;
-  bottom: -0.5rem;
+    &-item {
+      @include font-philosopher(2rem, #FFF, 700);
+      text-shadow: 0 2.162px 2.162px rgba(0, 0, 0, 0.25);
+      margin: 0.3rem 0;
+      position: relative;
+
+      &:hover::after, &.active::after {
+        opacity: 1;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background-color: currentColor;
+        bottom: -0.3rem;
+        left: 0;
+        opacity: 0;
+      }
+
+      &.active {
+        color: #9FF;
+      }
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import "./styles.scss";
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {Button, Card, Col, Flex, Row} from "antd";
 import {IconChevronsDown} from "@assets/icons";
 import FlipsterCarousel from "@shared/components/FlipsterCarousel";
@@ -48,30 +48,31 @@ const Home = () => {
     }, []);
 
     return (
-        <React.Fragment>
-            <section className="flex flex-col justify-center text-white text-center w-full" id="homeSection1">
-                <h2>CÔNG TY CỔ PHẦN DỊCH VỤ DU LỊCH PHÚ THỌ</h2>
-                <h1>PHUTHOTOURIST</h1>
-                <div className="subtitle">Ngày thành lập 01/01/2019</div>
-                <div style={{marginTop: '4.2rem'}}>
+        <div className="home">
+            <section className="home__section home__section--intro">
+                <Flex gap="small" vertical>
+                    <h2 className="home__company-name">CÔNG TY CỔ PHẦN DỊCH VỤ DU LỊCH PHÚ THỌ</h2>
+                    <h1 className="home__brand-name">PHUTHOTOURIST</h1>
+                    <div className="home__establishment-date">Ngày thành lập 01/01/2019</div>
+                </Flex>
+                <div className="home__carousel">
                     <FlipsterCarousel items={flipsterItems}/>
                 </div>
-                <Flex justify="center" className="w-full">
-                    <button id="btnScroll" onClick={() => scrollToViewByElementId("btnScroll")}>
-                        <IconChevronsDown/>
-                    </button>
-                </Flex>
+                <button id="btnScroll" className="home__scroll-btn" onClick={() => scrollToViewByElementId("btnScroll")}>
+                    <IconChevronsDown/>
+                </button>
             </section>
-            <section className="w-full bg-section" id="homeSection2">
+            <section className="home__section home__section--about">
                 <Row gutter={[24, 24]}>
                     <Col xs={24} lg={24} xl={12} className="wrap-post">
                         <Flex vertical gap="3.2rem">
                             <Flex vertical gap="1.6rem">
-                                <h3 className="category">VỀ CHÚNG TÔI</h3>
-                                <div className="title">Chúng tôi cung cấp dịch vụ du lịch đáp ứng mọi nhu cầu của bạn!
+                                <h3 className="home__section-category">VỀ CHÚNG TÔI</h3>
+                                <div className="home__section-title">Chúng tôi cung cấp dịch vụ du lịch đáp ứng mọi nhu
+                                    cầu của bạn!
                                 </div>
                             </Flex>
-                            <div className="content">
+                            <div className="home__section-description">
                                 <p>
                                     Công ty Cổ phần Dịch vụ Du lịch Phú Thọ (Phuthotourist), là một đơn vị thành viên
                                     của
@@ -79,7 +80,7 @@ const Home = () => {
                                     TP.HCM
                                     (Quận 11) như:
                                 </p>
-                                <ul className="list-inside">
+                                <ul>
                                     <li>Công viên Văn hóa Đầm Sen</li>
                                     <li>Khu du lịch sinh thái Vàm Sát</li>
                                     <li>Khách sạn Ngọc Lan</li>
@@ -96,13 +97,13 @@ const Home = () => {
                             </div>
                         </Flex>
                     </Col>
-                    <Col xs={24} lg={24} xl={12} className="wrap-banner">
-                        <div className="banner-item banner-top">
+                    <Col xs={24} lg={24} xl={12}>
+                        <div className="home__section--about-banner home__section--about-banner--top">
                             <img
                                 src="https://firebasestorage.googleapis.com/v0/b/fir-alta-aef46.appspot.com/o/home%2Fsection%202%2F1.png?alt=media"
                                 alt="Banner"/>
                         </div>
-                        <div className="banner-item banner-bottom">
+                        <div className="home__section--about-banner home__section--about-banner--bottom">
                             <img
                                 src="https://firebasestorage.googleapis.com/v0/b/fir-alta-aef46.appspot.com/o/home%2Fsection%202%2F2.png?alt=media"
                                 alt="Banner"/>
@@ -110,17 +111,19 @@ const Home = () => {
                     </Col>
                 </Row>
             </section>
-            <section className="flex flex-col w-full text-center" id="homeSection3">
-                <h3>CHIA SẺ THÔNG TIN</h3>
-                <h4>Bài viết mới</h4>
+
+            <section className="home__section home__section--posts">
+                <h3 className="home__section-category" style={{color: '#FFF'}}>CHIA SẺ THÔNG TIN</h3>
+                <h4 className="home__section-title">Bài viết mới</h4>
                 <Flex justify="center" className="w-full">
                     <span className="rectangle"></span>
                 </Flex>
-                <div className="subtitle">Hãy cùng chúng tôi chia sẻ những bài viết mới với các thông tin về những sản
+                <div className="home__section-description" style={{color: '#F0F0F0'}}>Hãy cùng chúng tôi chia sẻ những
+                    bài viết mới với các thông tin về những sản
                     phẩm du lịch
                 </div>
-                <Flex justify="center" className="wrap-card">
-                    <Row className="w-75" gutter={[24, 24]}>
+                <Flex justify="center" className="home__section--posts-cards-container">
+                    <Row className="home__section--posts-cards" gutter={[24, 24]}>
                         {
                             posts.map((post, index) => (
                                 <Col xs={24} lg={12} xl={12} xxl={8} key={"card-post-col-" + index}>
@@ -130,33 +133,36 @@ const Home = () => {
                         }
                     </Row>
                 </Flex>
-                <Flex justify="center" className="w-full wrap-btn">
+                <Flex justify="center">
                     <Link to="/bai-viet">
                         <Button type="primary" size="large">Xem thêm bài viết</Button>
                     </Link>
                 </Flex>
             </section>
-            <section className="flex flex-col w-full text-center bg-section" id="homeSection4">
-                <Flex vertical gap="1.6rem">
-                    <h3>LĨNH VỰC HOẠT ĐỘNG</h3>
-                    <h4>Các dịch vụ trọng tâm</h4>
-                    <div className="subtitle">3 dịch vụ trọng tâm của Phuthotourist là vui chơi giải trí, nhà hàng –
+
+            <section className="home__section home__section--services">
+                <Flex vertical gap="middle">
+                    <h3 className="home__section-category">LĨNH VỰC HOẠT ĐỘNG</h3>
+                    <h4 className="home__section-title">Các dịch vụ trọng tâm</h4>
+                    <div className="home__section-description">3 dịch vụ trọng tâm của Phuthotourist là vui chơi giải
+                        trí, nhà hàng –
                         khách sạn, và dịch vụ lữ
                         hành
                     </div>
                 </Flex>
 
-                <Flex className="wrap-card" justify="center">
-                    <Row className="w-75" gutter={[24, 24]}>
+                <Flex className="home__section--services-cards-container" justify="center">
+                    <Row className="home__section--services-cards" gutter={[24, 24]}>
                         {
                             cardData.map((data) => (
                                 <Col xl={8} md={12} sm={24} key={"card-data-" + data.id}>
                                     <Card
+                                        className="home-card-service"
                                         cover={<img alt="Card Item" loading="lazy"
                                                     src={data.image}/>}
                                     >
-                                        <div className="card-title">{data.title}</div>
-                                        <p className="card-desc">{data.description}</p>
+                                        <div className="home-card-service__title">{data.title}</div>
+                                        <p className="home-card-service__desc">{data.description}</p>
                                     </Card>
                                 </Col>
                             ))
@@ -164,7 +170,7 @@ const Home = () => {
                     </Row>
                 </Flex>
             </section>
-        </React.Fragment>
+        </div>
     );
 };
 
