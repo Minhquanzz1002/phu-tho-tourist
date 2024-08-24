@@ -28,6 +28,7 @@
       "@layout/*": ["src/layout/*"],
       "@assets/*": ["src/shared/assets/*"],
       "@shared/*": ["src/shared/*"],
+      "@helper/*": ["src/shared/helper/*"],
       "@hook/*": ["src/shared/hook/*"]
     }
   },

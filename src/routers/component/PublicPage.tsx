@@ -4,13 +4,11 @@ import {Routes} from "react-router-dom";
 import React from "react";
 import DefaultLayout from "@layout/index.tsx";
 
-const PublicPage : React.FC = () => {
+export const PublicPage : React.FC = React.memo(() => {
     const {views} = useRouter({routers: publicPage})
     return (
         <DefaultLayout>
             <Routes>{views}</Routes>
         </DefaultLayout>
     );
-};
-
-export default React.memo(PublicPage);
+});

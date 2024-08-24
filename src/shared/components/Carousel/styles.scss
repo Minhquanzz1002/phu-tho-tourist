@@ -8,10 +8,18 @@
   border-radius: 1.2rem;
   background-color: white;
 
+  @include for-size(md, down) {
+    height: 25rem;
+  }
+
   .wrap-image {
     height: 38.6rem;
     width: 100%;
     overflow: hidden;
+
+    @include for-size(md, down) {
+      height: 13.5rem;
+    }
 
     img {
       object-fit: cover;
@@ -23,6 +31,10 @@
   .carousel-title {
     @include font-philosopher-bold(3.8rem, $bluePrimary500);
     line-height: normal;
+
+    @include for-size(md, down) {
+      font-size: 1.5rem;
+    }
   }
 
   .carousel-btn {
@@ -50,8 +62,11 @@
   .carousel-component__container-footer {
     height: 21.8rem;
     padding: 2rem;
-
     transition: opacity 0.1s;
+
+    @include for-size(md, down) {
+      height: auto;
+    }
 
     &.fade-out {
       opacity: 0;

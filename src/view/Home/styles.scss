@@ -1,248 +1,223 @@
 @import "../styles/variable";
-//----------------------------------
-//          SECTION 1               |
-//----------------------------------
-#homeSection1 {
-  padding-bottom: 15.4rem;
+@import "../styles/mixin";
 
-  h2 {
-    font-size: 3rem;
-    font-weight: 700;
-    font-family: "Philosopher", sans-serif;
+.home {
+  padding: {
+    left: 8%;
+    right: 8%;
   }
 
-  h1 {
-    margin-top: 2.4rem;
-    font-size: 4.4rem;
-    font-weight: 700;
-    font-family: "Helvetica Neue", sans-serif;
+  @include for-size(md, down) {
+    padding: 0;
+  }
+
+  &__company-name {
+    @include font-philosopher(3rem, #FFF, 700);
+    line-height: 3.6rem;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.20);
+
+    @include for-size(md, down) {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__brand-name {
+    @include font-helvetica-neue(4.4rem, #9FF, 700);
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
     letter-spacing: 1.76px;
-    color: #9FF;
+
+    @include for-size(md, down) {
+      font-size: 2.4rem;
+      letter-spacing: 0.96px;
+    }
   }
 
-  .subtitle {
-    margin-top: 2.4rem;
-    font-family: "Helvetica Neue", sans-serif;
-    font-size: 2.4rem;
-    color: #FFF;
-    font-weight: 400;
+  &__establishment-date {
+    @include font-helvetica-neue(2.4rem, #FFF, 400);
+    line-height: 3.6rem;
     font-style: italic;
+
+    @include for-size(md, down) {
+      font-size: 1.4rem;
+    }
   }
 
-  //.slider {
-  //  margin-top: 4.2rem;
-  //  height: 53.2rem;
-  //  display: flex;
-  //  justify-content: center;
-  //
-  //  .card:nth-child(3) {
-  //    z-index: 3;
-  //  }
-  //
-  //  .card:nth-child(1), .card:nth-child(5) {
-  //    padding-top: 9.02rem;
-  //    z-index: 1;
-  //  }
-  //
-  //  .card:nth-child(1) {
-  //    transform: translateX(9.039rem);
-  //  }
-  //
-  //  .card:nth-child(5) {
-  //    transform: translateX(-9.039rem);
-  //  }
-  //
-  //  .card:nth-child(2), .card:nth-child(4) {
-  //    padding-top: 2.969rem;
-  //    z-index: 2;
-  //  }
-  //
-  //  .card:nth-child(2) {
-  //    transform: translateX(2.952rem);
-  //  }
-  //
-  //  .card:nth-child(4) {
-  //    transform: translateX(-2.952rem);
-  //  }
-  //}
+  &__carousel {
+    margin-top: 4.2rem;
+    margin-bottom: 3.6rem;
+  }
 
-  button {
-    border: none;
-    background: none;
-    cursor: pointer;
-    margin-top: 3.6rem;
+  &__scroll-btn {
 
     &:hover {
       transition: transform 0.3ms ease-out;
       animation: bounce 1s infinite;
       transform: translateY(5px);
     }
-  }
-}
 
-
-//----------------------------------
-//          SECTION 2               |
-//----------------------------------
-#homeSection2 {
-  border-radius: 2.4rem 2.4rem 0 0;
-  padding: 4.8rem 4rem;
-
-  .category {
-    color: $gray600;
-    font: {
-      weight: 600;
-      size: 2rem;
-      family: "Roboto", sans-serif;
-    };
-  }
-
-  .title {
-    color: $bluePrimary600;
-    font: {
-      weight: 700;
-      size: 4.4rem;
-      style: normal;
-      family: "Philosopher", sans-serif;
-    };
-  }
-
-  .content {
-    padding-left: 1.9rem;
-    border-left: 2px solid $bluePrimary300;
-    font: {
-      weight: 400;
-      family: "Roboto", sans-serif;
-      size: 2rem
-    };
-  }
-
-  .wrap-banner {
-    .banner-item {
-      img {
-        object-fit: contain;
-        width: 100%;
-        border-radius: 27px;
-        border: 5px solid #FFF;
-      }
-
-      &.banner-top {
-        padding-right: 6rem;
-      }
-
-      &.banner-bottom {
-        padding-left: 6rem;
-        margin-top: -5rem;
-      }
+    @include for-size(md, down) {
+      transition: transform 0.3ms ease-out;
+      animation: bounce 1s infinite;
+      transform: translateY(5px);
     }
   }
-}
 
-//----------------------------------
-//          SECTION 3               |
-//----------------------------------
-#homeSection3 {
-  background: rgba(78, 149, 219, 0.70);
-  backdrop-filter: blur(7.5px);
-  padding-top: 4rem;
-  padding-bottom: 6.8rem;
+  &__section {
+    &-category {
+      @include font-roboto(2rem, $gray600, 600);
 
-  h3 {
-    font-family: "Roboto", sans-serif;
-    font-weight: 600;
-    font-size: 2rem;
-    color: white;
-  }
+      @include for-size(md, down) {
+        font-size: 1.2rem;
+        text-align: center;
+      }
+    }
 
-  h4 {
-    margin-top: 1.6rem;
-    font-family: "Philosopher", sans-serif;
-    font-size: 4.4rem;
-    font-weight: 700;
-    color: $bluePrimary60;
-  }
+    &-title {
+      @include font-philosopher(4.4rem, $bluePrimary600, 700);
 
-  .rectangle {
-    margin-top: 1.6rem;
-    width: 13rem;
-    height: 0.6rem;
-    border-radius: 10rem;
-    background: $bluePrimary60;
-  }
-
-  .wrap-card {
-    margin-top: 3.7rem;
-  }
-
-  .subtitle {
-    margin-top: 1.6rem;
-    font-family: "Roboto", sans-serif;
-    font-size: 2rem;
-    color: var(--gray-gray-50, #F0F0F0);
-  }
-
-  .wrap-btn {
-    margin-top: 3.2rem;
-  }
-}
-
-
-//----------------------------------
-//          SECTION 4               |
-//----------------------------------
-
-#homeSection4 {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-  margin-bottom: 8rem;
-  border-radius: 0 0 2.4rem 2.4rem;
-
-  h3 {
-    font-family: "Roboto", sans-serif;
-    font-weight: 600;
-    font-size: 2rem;
-    color: $gray600;
-  }
-
-  h4 {
-    font-family: "Philosopher", sans-serif;
-    font-size: 4.4rem;
-    font-weight: 700;
-    color: $bluePrimary600;
-  }
-
-  .rectangle {
-    width: 13rem;
-    height: 0.6rem;
-    border-radius: 10rem;
-    background: $bluePrimary60;
-  }
-
-  .subtitle {
-    font-family: "Roboto", sans-serif;
-    font-size: 2rem;
-    color: $gray600;
-  }
-
-  .wrap-card {
-    margin-top: 3.2rem;
-
-    .ant-card-body {
-      font-family: "Roboto", sans-serif;
-
-      .card-title {
-        color: $bluePrimary500;
+      @include for-size(md, down) {
         font-size: 2rem;
-        font-weight: 700;
-        line-height: normal;
+        text-align: center;
+      }
+    }
+
+    &-description {
+      @include font-roboto(2rem, $gray600, 400);
+
+      @include for-size(md, down) {
+        font-size: 1.4rem;
+      }
+    }
+
+
+    &--intro {
+      padding-bottom: 15.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: white;
+      text-align: center;
+
+    }
+
+    &--about {
+      padding: 4.8rem 4rem;
+      border-radius: 2.4rem 2.4rem 0 0;
+      background: rgba(255, 255, 255, 0.70);
+      backdrop-filter: blur(7.5px);
+
+      @include for-size(md, down) {
+        border-radius: 0;
       }
 
-      .card-desc {
-        color: $gray500;
-        line-height: 2.1rem;
-        font: {
-          size: 1.6rem;
-          weight: 400;
+      &-banner {
+        img {
+          object-fit: contain;
+          width: 100%;
+          border-radius: 27px;
+          border: 5px solid #FFF;
+        }
+
+        &--top {
+          padding-right: 6rem;
+        }
+
+        &--bottom {
+          padding-left: 6rem;
+          margin-top: -5rem;
+        }
+      }
+    }
+
+    &--posts {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      background: rgba(78, 149, 219, 0.70);
+      backdrop-filter: blur(7.5px);
+      padding-top: 4rem;
+      padding-bottom: 6.8rem;
+
+      @include for-size(md, down) {
+        padding: {
+          left: 5%;
+          right: 5%;
+        };
+      }
+
+      &-cards-container {
+        margin: {
+          top: 3.7rem;
+          bottom: 3.2rem;
+        };
+      }
+
+      &-cards {
+        padding: {
+          left: 14%;
+          right: 14%;
+        }
+
+        @include for-size(md, down) {
+          padding: 0;
+        }
+      }
+    }
+
+    &--services {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.70);
+      backdrop-filter: blur(7.5px);
+      padding: {
+        top: 4rem;
+        bottom: 4rem;
+      };
+      border-radius: 0 0 2.4rem 2.4rem;
+
+      @include for-size(md, down) {
+        border-radius: 0;
+        padding: {
+          left: 5%;
+          right: 5%;
+        };
+      }
+
+      &-cards-container {
+        margin-top: 3.2rem;
+
+        .ant-card-body {
+          padding: 1.6rem;
+        }
+
+        .home-card-service {
+          &__title {
+            @include font-roboto(2rem, $bluePrimary500, 700);
+            text-overflow: ellipsis;
+            @include line-clamp(1);
+          }
+
+          &__desc {
+            @include font-roboto(1.6rem, $gray500, 400);
+            line-height: 2.1rem;
+            text-align: center;
+            text-overflow: ellipsis;
+            @include line-clamp(3);
+          }
+        }
+      }
+
+      &-cards {
+        padding: {
+          left: 14%;
+          right: 14%;
+        }
+
+        @include for-size(md, down) {
+          padding: 0;
         }
       }
     }

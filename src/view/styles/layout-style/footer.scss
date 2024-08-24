@@ -1,13 +1,106 @@
-#footer .copyright {
-  display: block;
+@import "../mixin";
+.footer {
+  background-color: rgba(0, 37, 73, 0.8);
+  color: white;
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+  @include font-roboto(1.6rem, #FFF,  400);
 
-  @media (max-width: 768px) {
-    display: none;
+  @include for-size(sm, down) {
+    font-size: 1.4rem;
   }
-}
 
-#footer .footer-col {
-  @media (max-width: 768px) {
-    margin-top: 4rem;
+  &__container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+
+    @include for-size(lg, down) {
+      gap: 3rem;
+    }
+
+  }
+
+  &__logo {
+    transform: translateX(-2.6rem);
+  }
+
+  &__company-name {
+    @include font-helvetica-neue(3.5rem, #9FF, 700);
+    letter-spacing: 1.4px;
+
+    @include for-size(sm, down) {
+      font-size: 2.1rem;
+      letter-spacing: 0.845px;
+    }
+  }
+
+  &__company {
+    @include font-helvetica-neue(1.35rem, #FFF, 700);
+
+    @include for-size(sm, down) {
+      font-size: 0.81rem;
+    }
+  }
+
+  &__copyright {
+    @include font-roboto(1.4rem, #FFF,  400);
+
+    @include for-size(sm, down) {
+      display: none;
+    }
+  }
+
+  &__heading {
+    @include font-philosopher(2.4rem, #FFF, 700);
+
+    @include for-size(sm, down) {
+      font-size: 1.6rem;
+    }
+  }
+
+  &__contact {
+    margin-top: 2rem;
+    height: 16rem;
+
+    @include for-size(sm, down) {
+      margin-top: 0.8rem;
+      height: auto;
+      gap: 1.2rem;
+    }
+  }
+
+  &__system-list {
+    margin-top: 2rem;
+    height: 16rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include for-size(sm, down) {
+      margin-top: 0.8rem;
+      height: auto;
+      gap: 1.2rem;
+    }
+  }
+
+  &__system-list-item {
+    cursor: default;
+
+    &:hover {
+      text-decoration-line: underline;
+    }
+  }
+
+  &__copyright-mobi {
+    display: none;
+
+    @include for-size(sm, down) {
+      display: block;
+      text-align: center;
+    }
   }
 }

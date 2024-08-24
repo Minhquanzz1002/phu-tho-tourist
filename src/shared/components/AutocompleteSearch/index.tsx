@@ -1,125 +1,152 @@
+import "./styles.scss";
 import React, {useEffect, useRef, useState} from "react";
 import {IconSearch} from "@assets/icons";
-import {Flex, Input, InputRef, List} from "antd";
+import {Flex, Input, InputProps, List} from "antd";
+import useClickOutside from "@hook/useClickOutside.tsx";
+import {useLocalStorage} from "@hook/useLocalStorage.tsx";
 
-const AutocompleteSearch = () => {
-    const [searchTerm, setSearchTerm] = useState<string>("");
+const ClearIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+         viewBox="0 0 24 24" fill="none">
+        <path d="M8 16L16 8M16 16L8 8" stroke="#666666" strokeWidth="1.5"
+              strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+)
+
+enum DropdownState {
+    Suggestion = 'Suggestion',
+    History = 'History',
+    None = 'None'
+}
+
+interface AutoCompleteSearchProps extends InputProps {
+    value?: string;
+    onChange?: (value: any) => void;
+}
+
+const AutocompleteSearch = (props: AutoCompleteSearchProps) => {
+    const [searchValue, setSearchValue] = useState<string>("");
     const [suggestions, setSuggestions] = useState<string[]>([]);
-    const [searchHistory, setSearchHistory] = useState<string[]>(["Công Viên Văn Hóa Đầm Sen", "KDLST Vàm Sát", "Công Viên Văn Hóa Đầm Sen", "Công Viên Văn Hóa Đầm Sen"]);
-    const [showSearchHistory, setShowSearchHistory] = useState<boolean>(false);
-    const ref = useRef<InputRef>(null);
+    const [searchHistory, setSearchHistory] = useLocalStorage<string[]>("searchHistory", []);
+    const [dropdownState, setDropdownState] = useState<DropdownState>(DropdownState.None);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const staticSuggestions = ["Nhân viên phục  vụ", "Nhân viên bảo vệ", "Nhân viên thiết  kế", "Nhân viên bảo trì", "Nhân viên trợ lý"];
+
+    useEffect(() => {
+        if (searchValue === props.value || props.value == null) {
+            return;
+        }
+        setSearchValue(props.value);
+    }, [props.value]);
+
+    useClickOutside<HTMLDivElement>(containerRef, () => setDropdownState(DropdownState.None));
+
+    const filterSuggestions = (value: string): string[] => {
+        if (value) {
+            return staticSuggestions.filter(item => item.toLowerCase().includes(value.toLowerCase()));
+        }
+        return [];
+    }
 
     const handleSearchChange = (value: string) => {
-        setSearchTerm(value);
+        setSearchValue(value);
+        if (props.onChange) {
+            props.onChange(value);
+        }
         if (value !== '') {
-            setShowSearchHistory(false);
+            setDropdownState(DropdownState.Suggestion);
         } else {
-            setShowSearchHistory(true);
+            setDropdownState(DropdownState.History);
         }
-
-        const staticSuggestions = ["Nhân viên phục  vụ", "Nhân viên bảo vệ", "Nhân viên thiết  kế", "Nhân viên bảo trì", "Nhân viên trợ lý"];
-        if (value) {
-            setSuggestions(
-                staticSuggestions.filter((item) =>
-                    item.toLowerCase().includes(value.toLowerCase())
-                )
-            );
-        } else {
-            setSuggestions([]);
-        }
+        setSuggestions(filterSuggestions(value));
     };
 
     const handleClickSearchInput = (e: React.MouseEvent) => {
         e.preventDefault();
-        setShowSearchHistory(true);
-    }
-
-    const handleSearch = () => {
-        setShowSearchHistory(false);
-    }
-
-    const handleClickOutside = (event: MouseEvent) =>  {
-        if (ref.current  && ref.current.input && !ref.current.input.contains(event.target as Node)) {
-            setShowSearchHistory(false);
-            setSuggestions([]);
+        if (searchValue) {
+            setSuggestions(filterSuggestions(searchValue));
+            setDropdownState(DropdownState.Suggestion);
+        } else {
+            setDropdownState(DropdownState.History);
         }
     }
 
-    useEffect(() => {
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, []);
+    const handleClickDropdownItem = (item: string) => {
+        setSearchValue(item);
+        if (props.onChange) {
+            props.onChange(item);
+        }
+        setDropdownState(DropdownState.None);
+    }
+
+    const handleRemoveHistory = (e: React.MouseEvent, historyToRemove: string) => {
+        e.stopPropagation();
+        setSearchHistory(prevHistory => prevHistory.filter(item => item !== historyToRemove));
+    }
+
+    const handleSearch = () => {
+        setDropdownState(DropdownState.None);
+        if (searchValue.trim() === "") return;
+
+        setSearchHistory(prevHistory => {
+            const updatedHistory: string[] = [searchValue, ...prevHistory.filter(item => item !== searchValue)].slice(0, 5);
+            return updatedHistory;
+        })
+    }
+
+    const renderDropdownItem = (item: string, isHistory: boolean) => (
+        <List.Item className="container-autocomplete-search__dropdown-item"
+                   onClick={() => handleClickDropdownItem(item)}
+                   style={{border: 'none', padding: '0.8rem'}}>
+            <Flex align="center" gap="small" justify={isHistory ? "space-between" : "start"}
+                  className="container-autocomplete-search__dropdown-content">
+                {
+                    !isHistory && (
+                        <Flex align="center" justify="center"
+                              className="container-autocomplete-search__dropdown-icon">
+                            <IconSearch style={{color: 'white', width: '1.2rem', height: '1.2rem'}}/>
+                        </Flex>
+                    )
+                }
+                {item}
+                {
+                    isHistory && (
+                        <button className="container-autocomplete-search__dropdown-btn-clear"
+                                onClick={(e) => handleRemoveHistory(e, item)}>
+                            <ClearIcon/>
+                        </button>
+                    )
+                }
+            </Flex>
+        </List.Item>
+    )
 
     return (
-        <div style={{width: '100%', position: 'relative', zIndex: '10'}}>
-            <Input ref={ref} id="search" placeholder="Tìm kiếm" allowClear
+        <div className="container-autocomplete-search" ref={containerRef}>
+            <Input id="search" placeholder="Tìm kiếm" allowClear
+                   {...props}
                    prefix={<IconSearch style={{color: '#0054A6'}}/>}
                    onClick={handleClickSearchInput}
                    onPressEnter={handleSearch}
-                   onChange={e => handleSearchChange(e.target.value)} value={searchTerm}/>
+                   onChange={e => handleSearchChange(e.target.value)} value={searchValue}/>
             {
-                suggestions.length > 0 && (
-                    <List
-                        style={{
-                            display: 'block',
-                            position: 'absolute',
-                            top: '100%',
-                            width: '100%',
-                            zIndex: '1050',
-                            backgroundColor: 'white',
-                            border: '1px solid #d9d9d9',
-                            borderRadius: '4px',
-                        }}
-                        size="small"
-                        dataSource={suggestions}
-                        renderItem={(item) => (
-                            <List.Item>
-                                <Flex align="center" gap="small">
-                                    <Flex align="center" justify="center" style={{
-                                        height: '2.4rem',
-                                        width: '2.4rem',
-                                        background: 'rgba(194, 194, 194, 1)',
-                                        borderRadius: '50%'
-                                    }}>
-                                        <IconSearch style={{color: 'white', width: '1.2rem', height: '1.2rem'}}/>
-                                    </Flex>
-                                    {item}
-                                </Flex>
-                            </List.Item>
-                        )}
-                    />
-                )
-            }
-
-            {
-                showSearchHistory && searchHistory.length > 0 && (
-                    <List
-                        style={{
-                            display: 'block',
-                            position: 'absolute',
-                            top: '100%',
-                            width: '100%',
-                            zIndex: '1050',
-                            backgroundColor: 'white',
-                            border: '1px solid #d9d9d9',
-                            borderRadius: '4px',
-                        }}
-                        size="small"
-                        dataSource={searchHistory}
-                        renderItem={(item) => (
-                            <List.Item>
-                                <Flex align="center" gap="small">
-                                    {item}
-                                </Flex>
-                            </List.Item>
-                        )}
-                    />
+                dropdownState !== DropdownState.None && (
+                    <div className="container-autocomplete-search__dropdown">
+                        {
+                            dropdownState === DropdownState.History && (
+                                <div className="container-autocomplete-search__dropdown-title">Lịch sử tìm kiếm:</div>
+                            )
+                        }
+                        <List
+                            size="small"
+                            dataSource={dropdownState === DropdownState.History ? searchHistory : suggestions}
+                            renderItem={(item) => renderDropdownItem(item, dropdownState === DropdownState.History)}
+                        />
+                    </div>
                 )
             }
         </div>
     );
 };
-
-export default AutocompleteSearch;
+const MemoizedAutocompleteSearch = React.memo(AutocompleteSearch);
+export default MemoizedAutocompleteSearch;

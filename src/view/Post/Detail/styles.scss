@@ -10,18 +10,35 @@
   align-items: center;
   gap: 4.8rem;
 
+  @include for-size(md, down) {
+    padding:1.6rem;
+    border-radius: 0.8rem;
+  }
+
   h1  {
     @include font-roboto(4.8rem,  $bluePrimary500, 700);
+
+    @include for-size(md, down) {
+      font-size: 1.4rem;
+    }
   }
 
   .post-author {
     @include font-roboto(1.6rem,  $gray500, 400);
     line-height: 2.1rem;
+
+    @include for-size(md, down) {
+      font-size: 1.2rem;
+    }
   }
 
   .post-content {
     @include font-roboto(1.8rem,  $gray700, 400);
     line-height: 150%;
+
+    @include for-size(md, down) {
+      font-size: 1.2rem;
+    }
 
     * {
       margin-top: 1rem;
@@ -29,9 +46,29 @@
   }
 
   .container-related-post {
+    @include for-size(md, down) {
+      display: none;
+    }
+
     .container-related-post__title {
       @include font-roboto(3.2rem,  $bluePrimary500, 600);
       line-height: 3.6rem;
     }
+  }
+}
+
+#postDetailSection2 {
+  display: none;
+
+  @include for-size(md, down) {
+    display: block;
+    padding: 1.6rem;
+    @include background-section(0.8rem);
+    margin-top: 1.2rem;
+  }
+
+  .title {
+    @include font-roboto(1.6rem, $bluePrimary500, 700);
+    margin-bottom: 1.2rem;
   }
 }
