@@ -1,23 +1,15 @@
 import {Flex, Layout, Space} from "antd";
 import {Link, NavLink} from "react-router-dom";
-import React, {CSSProperties} from "react";
+import React, {useState} from "react";
 import {IconMenu, IconXMark} from "@assets/icons";
 
 const HeaderComponent = () => {
-    const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false);
-
-    const styles: { [key: string]: CSSProperties } = {
-        menuBtn: {
-            background: "unset",
-            border: "unset",
-            cursor: "pointer"
-        }
-    }
+    const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
 
     return (
         <React.Fragment>
-            <Layout.Header className="layout-header" id="header">
-                <Flex align="center" justify="center" gap="4rem" className="w-full" id="navbar">
+            <Layout.Header className="header" id="header">
+                <Flex align="center" justify="center" gap="4rem" className="header__navbar">
                     <NavLink className="header__menu-item" to="/">TRANG CHỦ</NavLink>
                     <NavLink className="header__menu-item" to="/bai-viet">BÀI VIẾT</NavLink>
                     <Link to="/" className="flex justify-center ">
@@ -27,29 +19,30 @@ const HeaderComponent = () => {
                     <NavLink className="header__menu-item" to="/tuyen-dung">TUYỂN DỤNG</NavLink>
                 </Flex>
 
-                <Flex className="w-full" align="center" justify="space-between" id="navbarMobi">
-                    <img src="/logo-small.svg" alt="Logo"/>
-                    <button type="button" style={styles.menuBtn} onClick={() => setShowMobileMenu(true)}>
+                <Flex className="header__mobile-navbar" align="center" justify="space-between">
+                    <img className="header__mobile-logo" src="/logo-small.svg" alt="Logo"/>
+                    <button className="header__mobile-menu-btn" type="button" onClick={() => setShowMobileMenu(true)}>
                         <IconMenu/>
                     </button>
                 </Flex>
             </Layout.Header>
             {
                 showMobileMenu && (
-                    <div id="menuMobile">
-                        <Flex justify="end" align="center" className="w-full">
-                            <button id="closeMenuBtn" type="button" onClick={() => setShowMobileMenu(false)}>
+                    <div className="header__mobile-menu">
+                        <Flex justify="end" align="center" className="header__mobile-menu-header">
+                            <button className="header__mobile-menu-close-btn" type="button"
+                                    onClick={() => setShowMobileMenu(false)}>
                                 <IconXMark/>
                             </button>
                         </Flex>
-                        <Space direction="vertical" size="middle"  style={{marginTop: '6rem'}}>
-                            <NavLink className="header__menu-item" to="/" onClick={() => setShowMobileMenu(false)}>TRANG
+                        <Space className="header__mobile-menu-items" direction="vertical" size="middle">
+                            <NavLink className="header__mobile-menu-item" to="/" onClick={() => setShowMobileMenu(false)}>TRANG
                                 CHỦ</NavLink>
-                            <NavLink className="header__menu-item" to="/bai-viet" onClick={() => setShowMobileMenu(false)}>BÀI
+                            <NavLink className="header__mobile-menu-item" to="/bai-viet" onClick={() => setShowMobileMenu(false)}>BÀI
                                 VIẾT</NavLink>
-                            <NavLink className="header__menu-item" to="/tai-lieu" onClick={() => setShowMobileMenu(false)}>TÀI
+                            <NavLink className="header__mobile-menu-item" to="/tai-lieu" onClick={() => setShowMobileMenu(false)}>TÀI
                                 LIỆU</NavLink>
-                            <NavLink className="header__menu-item" to="/tuyen-dung"
+                            <NavLink className="header__mobile-menu-item" to="/tuyen-dung"
                                      onClick={() => setShowMobileMenu(false)}>TUYỂN DỤNG</NavLink>
                         </Space>
                     </div>

@@ -1,6 +1,7 @@
 import {IRouter} from "../interface.ts";
 import {Route} from "react-router-dom";
 import React from "react";
+import Loading from "@shared/components/Loading";
 
 interface IShowRouter {
     routers: IRouter[];
@@ -13,7 +14,7 @@ const renderRouter = (router: IRouter) => {
             key={router.path}
             path={router.path}
             element={
-                <React.Suspense fallback={<div>loading...</div>}>
+                <React.Suspense fallback={<Loading/>}>
                     <DynamicComponent/>
                 </React.Suspense>
             }

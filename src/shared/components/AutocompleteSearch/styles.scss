@@ -3,8 +3,10 @@
 
 .container-autocomplete-search {
   position: relative;
+  z-index: 5;
 
   &__dropdown {
+    opacity: 1;
     position: absolute;
     top: 110%;
     width: 100%;

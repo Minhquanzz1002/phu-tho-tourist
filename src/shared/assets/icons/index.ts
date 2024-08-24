@@ -19,5 +19,6 @@ export {default as IconBell} from "./BellIcon.tsx";
 export {default as IconFolder} from "./FolderIcon.tsx";
 export {default as IconUsers} from "./UsersIcon.tsx";
 export {default as IconNews} from "./NewsIcon.tsx";
+export {default as IconPaperclip} from "./PaperclipIcon.tsx";
 export {default as IconArrowDownUp} from "./ArrowDownUpIcon.tsx";
 export {default as IconArrowNext} from "./ArrowNextIcon.tsx";

@@ -1,5 +1,20 @@
 @import "../styles/variable";
 @import "../styles/mixin";
+
+.document-container {
+  padding: {
+    left: 8%;
+    right: 8%;
+  }
+
+  @include for-size(md, down) {
+    padding: {
+      left: 5%;
+      right: 5%;
+    };
+  }
+}
+
 //----------------------------------
 //          SECTION 1               |
 //----------------------------------
@@ -7,6 +22,11 @@
   margin: {
     bottom: 20rem;
   };
+
+  @include for-size(md, down) {
+    margin-bottom: 6rem;
+  }
+
   .scroll-to-bottom {
 
     @media (max-width: 768px) {
@@ -22,37 +42,69 @@
     }
   }
 
-  .wrap-cards {
-    margin-top: 4.8rem;
-    margin-bottom: 3.6rem;
+  .categories {
+    row-gap: 2.2rem;
+    margin: {
+      left: -1.1rem;
+      right: -1.1rem;
+      top: 4.8rem;
+      bottom: 3.6rem;
+    };
     padding: {
       left: 15%;
       right: 15%;
     };
 
-    .ant-col:nth-child(7) {
-      display: block;
-      @media (max-width: 768px) {
-        display: none;
-      }
-    }
-
-    .ant-col:nth-child(8) {
-
-      display: block;
-      @media (max-width: 768px) {
-        display: none;
-      }
-    }
-
-    @media (max-width: 768px) {
+    @include for-size(md, down) {
       padding: {
         left: 0;
         right: 0;
       };
+      row-gap: 1.6rem;
+      margin: {
+        left: -0.8rem;
+        right: -0.8rem;
+      };
     }
 
-    .card {
+    &__item {
+      &:nth-child(7), &:nth-child(8) {
+        display: block;
+        @media (max-width: 768px) {
+          display: none;
+        }
+      }
+    }
+
+    &__icon {
+      z-index: 2;
+      position: relative;
+    }
+
+    &__title {
+      position: relative;
+      @include font-roboto(1.4rem, #FFF, 700);
+      user-select: none;
+
+      @include for-size(md, down) {
+        font-size: 1rem;
+      }
+    }
+
+    &__text {
+      visibility: hidden;
+      position: absolute;
+      bottom: 2rem;
+      font: {
+        size: 1.4rem;
+        weight: 700;
+        family: "Roboto", sans-serif;
+      };
+      color: white;
+      user-select: none;
+    }
+
+    &__content {
       overflow: hidden;
       position: relative;
       height: 26.1rem;
@@ -64,19 +116,27 @@
         right: 3rem;
       }
 
+      @include for-size(md, down) {
+        padding: {
+          left: 0;
+          right: 0;
+          top: 3rem;
+          bottom: 3rem;
+        };
+        height: auto;
+      }
+
       &:hover > img {
         transform: scale(1.2);
         transition: all 0.2s ease-out;
       }
 
-      &:hover > .card-text {
-        display: block;
-      }
+      &:hover > .categories__text {
+        visibility: visible;
 
-      .icon {
-        margin-top: 5rem;
-        z-index: 2;
-        position: relative;
+        @include for-size(md, down) {
+          visibility: hidden;
+        }
       }
 
       img {
@@ -86,31 +146,6 @@
         height: 100%;
         width: 100%;
         z-index: 0;
-      }
-
-      .title {
-        position: relative;
-        font: {
-          size: 1.4rem;
-          weight: 700;
-          family: "Roboto", sans-serif;
-        };
-        color: white;
-        user-select: none;
-      }
-
-      .card-text {
-        display: none;
-        margin-top: auto;
-        margin-bottom: 1.5rem;
-        position: relative;
-        font: {
-          size: 1.4rem;
-          weight: 700;
-          family: "Roboto", sans-serif;
-        };
-        color: white;
-        user-select: none;
       }
     }
   }
@@ -239,6 +274,13 @@
 
     th:last-child, td:last-child {
       border-radius: 0 0.8rem 0.8rem 0;
+    }
+
+    td:last-child {
+
+      @include for-size(md, down) {
+        padding-right: 1.5rem;
+      }
     }
 
     thead {

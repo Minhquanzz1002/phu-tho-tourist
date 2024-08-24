@@ -1,27 +1,12 @@
 @import "variable";
 @import "keyframes";
+@import "mixin";
 //---------------------------
 //      RESET CSS           |
 //---------------------------
 
 html {
   font-size: 10px;
-
-  @media (max-width: 576px) {
-    font-size: 6px;
-  }
-
-  @media (min-width: 576px) {
-    font-size: 7px;
-  }
-
-  @media (min-width:992px) and (max-width: 1200px) {
-    font-size: 8px;
-  }
-
-  @media (min-width: 1200px) {
-    font-size: 10px;
-  }
 }
 
 body {
@@ -102,7 +87,17 @@ button {
 }
 
 .container {
-  width: 80%;
+  padding: {
+    left: 8%;
+    right: 8%;
+  }
+
+  @include for-size(md, down) {
+    padding: {
+      left: 5%;
+      right: 5%;
+    };
+  }
 }
 
 .hv-underline:hover {
@@ -133,6 +128,12 @@ button {
 
   a {
     color: #FFF !important;
+  }
+}
+
+.react-modal-sheet-header {
+  .react-modal-sheet-drag-indicator {
+    background-color: $bluePrimary300 !important;
   }
 }
 
@@ -228,4 +229,9 @@ button {
 .bg-section-rounded {
   padding: 2.8rem 2rem;
   border-radius: 2.4rem;
+}
+
+// User select
+.select-none {
+  user-select: none;
 }

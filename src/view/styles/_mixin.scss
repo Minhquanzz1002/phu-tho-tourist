@@ -18,12 +18,30 @@
   };
 }
 
+@mixin font-helvetica-neue($size, $color, $weight) {
+  color: $color;
+  font: {
+    family: "Helvetica Neue", sans-serif;
+    weight: $weight;
+    size: $size;
+  };
+}
+
 @mixin font-roboto-semi-bold($size, $color) {
   color: $color;
   font: {
     family: "Roboto", sans-serif;
     weight: 600;
     style: normal;
+    size: $size;
+  };
+}
+
+@mixin font-philosopher($size, $color, $weight) {
+  color: $color;
+  font: {
+    family: "Philosopher", sans-serif;
+    weight: $weight;
     size: $size;
   };
 }
@@ -50,4 +68,57 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: $clamp;
+}
+
+//----------------------------------
+//          BREAKPOINTS               |
+//----------------------------------
+$breakpoints: (
+        xs: 480px,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px,
+        xxl: 1600px
+);
+
+@mixin for-size($breakpoint, $direction:down) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    @if $direction == up {
+      @media (min-width: $breakpoint-value) {
+        @content;
+      }
+    } @else if $direction == down {
+      @media (max-width: $breakpoint-value) {
+        @content;
+      }
+    }
+  } @else {
+    @if $direction == up {
+      @media (min-width: $breakpoint) {
+        @content;
+      }
+    } @else if $direction == down {
+      @media (max-width: $breakpoint) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin between-sizes($lower, $upper) {
+  @if map-has-key($breakpoints, $lower ) and map-has-key($breakpoints, $upper) {
+    $lower-breakpoint: map-get($breakpoints, $lower);
+    $upper-breakpoint: map-get($breakpoints, $upper);
+
+    @media (min-width: $lower-breakpoint) and (max-width: $upper-breakpoint) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $lower) and (max-width: $upper) {
+      @content;
+    }
+  }
 }
