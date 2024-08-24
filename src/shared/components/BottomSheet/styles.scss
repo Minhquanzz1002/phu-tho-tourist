@@ -1,0 +1,16 @@
+.bottom-sheet {
+  padding: 2.4rem;
+
+  .ant-btn {
+    font-size: 1.4rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+  }
+
+  &__heading {
+    font-size: 1.4rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    color: rgba(0, 84, 166, 1);
+  }
+}

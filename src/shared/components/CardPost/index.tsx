@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {IPost} from "../../../modules/posts/interface.ts";
 import {formatToLocaleDateString, formatViews} from "@helper/function.tsx";
 
-interface ICardPostProps {
+export interface CardPostProps {
     size: "small" | "medium" | "large";
     post: IPost;
 }
@@ -62,8 +62,8 @@ const CardPostMedium = ({post}: { post: IPost }) => {
                     <h4 className="card-post--medium__title">{post.title}</h4>
                     <Flex align="center" className="card-post--medium__topics">
                         {
-                            post.topics.map((topic) => (
-                                <span>{topic}</span>
+                            post.topics.map((topic, index) => (
+                                <span key={`card-post-medium-${post.id}-${index}`}>{topic}</span>
                             ))
                         }
                     </Flex>
@@ -106,9 +106,9 @@ const CardPostLarge = ({post}: { post: IPost }) => {
                             }
                         </Flex>
                         <Flex gap="small" align="center" className="card-post--large__meta">
-                            <span>10N lượt xem</span>
+                            <span>{formatViews(post.views)} lượt xem</span>
                             {circleGraySvg}
-                            <span>20/02/2022</span>
+                            <span>{formatToLocaleDateString(post.publishedAt)}</span>
                         </Flex>
                     </Flex>
                 </div>
@@ -117,7 +117,7 @@ const CardPostLarge = ({post}: { post: IPost }) => {
     )
 }
 
-const CardPost = (props: ICardPostProps) => {
+const CardPost = (props: CardPostProps) => {
     if (props.size === "small") {
         return <CardPostSmall post={props.post}/>;
     } else if (props.size === "medium") {

@@ -1,6 +1,6 @@
 import "./styles.scss";
 import React from 'react';
-import {Button, Col, DatePicker, Flex, Form, Input, Radio, Row, Space} from "antd";
+import {Button, Col, DatePicker, Flex, Form, Input, InputNumber, Radio, Row, Space} from "antd";
 import {IconPaperclip} from "@assets/icons";
 
 const FormApplication = React.memo(() => {
@@ -46,10 +46,7 @@ const FormApplication = React.memo(() => {
                 </Col>
                 <Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={12}>
                     <Form.Item name="phone" label={<span className="label">Điện thoại</span>}>
-                        <Flex>
-                            <div>84</div>
-                            <Input placeholder="0123456789"/>
-                        </Flex>
+                        <InputNumber style={{width: '100%'}} placeholder="0123456789"/>
                     </Form.Item>
                 </Col>
             </Row>
@@ -79,8 +76,9 @@ const FormApplication = React.memo(() => {
                         {/*    <Button className="w-full" icon={<IconPaperclip/>} iconPosition="end" htmlType="button">Không*/}
                         {/*        có tập tin nào được chọn</Button>*/}
                         {/*</Upload>*/}
-                        <input name="cv" type="file" style={{ display: 'none' }} accept=".pdf"/>
-                        <Button style={{fontWeight: 400, textAlign: 'start'}} icon={<IconPaperclip/>} iconPosition="end" className="w-full">
+                        <input name="cv" type="file" style={{display: 'none'}} accept=".pdf"/>
+                        <Button style={{fontWeight: 400, textAlign: 'start'}} icon={<IconPaperclip/>} iconPosition="end"
+                                className="w-full">
                             Không có tập tin nào được chọn
                         </Button>
                     </Form.Item>
@@ -123,7 +121,7 @@ const FormApplication = React.memo(() => {
             </Form.Item>
 
             <Flex justify="end">
-                <Button htmlType="submit" type="primary" size="large">Gửi ngay</Button>
+                <Button className="btn-submit" htmlType="submit" type="primary" size="large">Gửi ngay</Button>
             </Flex>
         </Form>
     );

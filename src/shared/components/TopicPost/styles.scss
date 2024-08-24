@@ -7,6 +7,10 @@
   cursor: pointer;
   background: #FFF;
 
+  @include for-size(md, down) {
+    padding: .8rem;
+  }
+
   .wrap-icon {
     height: 2.4rem;
     width: 2.4rem;
@@ -17,6 +21,10 @@
     @include font-roboto-semi-bold(2rem, $bluePrimary300);
     text-overflow: ellipsis;
     @include line-clamp(1);
+
+    @include for-size(md, down) {
+      font-size: 1.4rem;
+    }
   }
 
   &:hover div:last-child {

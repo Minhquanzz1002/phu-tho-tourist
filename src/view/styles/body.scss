@@ -1,5 +1,6 @@
 @import "variable";
 @import "keyframes";
+@import "mixin";
 //---------------------------
 //      RESET CSS           |
 //---------------------------
@@ -86,7 +87,17 @@ button {
 }
 
 .container {
-  width: 80%;
+  padding: {
+    left: 8%;
+    right: 8%;
+  }
+
+  @include for-size(md, down) {
+    padding: {
+      left: 5%;
+      right: 5%;
+    };
+  }
 }
 
 .hv-underline:hover {

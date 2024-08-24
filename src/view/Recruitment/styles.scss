@@ -1,6 +1,20 @@
 @import "../styles/variable";
 @import "../styles/mixin";
 
+.recruitment-container {
+  padding: {
+    left: 8%;
+    right: 8%;
+  }
+
+  @include for-size(md, down) {
+    padding: {
+      left: 5%;
+      right: 5%;
+    };
+  }
+}
+
 #recruitmentSection {
   #searchBarMobile {
     display: none;
@@ -57,4 +71,8 @@
       padding: 0.5rem 1rem;
     }
   }
+}
+
+.filter-label {
+  @include font-roboto(1.4rem, $bluePrimary500, 700);
 }

@@ -1,6 +1,20 @@
 @import "../styles/variable";
 @import "../styles/mixin";
 
+.post-container {
+  padding: {
+    left: 8%;
+    right: 8%;
+  }
+
+  @include for-size(md, down) {
+    padding: {
+      left: 5%;
+      right: 5%;
+    };
+  }
+}
+
 //----------------------------------
 //          SECTION 1               |
 //----------------------------------
@@ -14,7 +28,11 @@
     @include background-section(0.8rem);
 
     h3 {
-      @include font-roboto-bold(2.4rem, $bluePrimary500)
+      @include font-roboto-bold(2.4rem, $bluePrimary500);
+      @include for-size(md, down) {
+        font-size: 1.6rem;
+      }
+    ;
     }
   }
 

@@ -1,4 +1,6 @@
 import {memo} from "react";
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
 import "@styles/styles.scss";
 import {PublicPage} from "./routers/component/PublicPage.tsx";
 import {ConfigProvider} from "antd";

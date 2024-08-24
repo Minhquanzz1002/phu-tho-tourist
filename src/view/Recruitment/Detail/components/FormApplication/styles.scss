@@ -3,7 +3,18 @@
 .form-application {
   .label {
     @include font-roboto(1.8rem, $gray600, 600);
+
+    @include for-size(md, down) {
+      @include font-roboto(1.2rem, $gray700, 600);
+      line-height: 1.4rem;
+    }
   }
 
+  .btn-submit {
+    @include for-size(md, down) {
+      width: 100%;
+      @include font-roboto(1.4rem, #FFF, 600);
+    }
+  }
 
 }

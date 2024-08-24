@@ -160,6 +160,10 @@
       @include font-roboto(2rem, $bluePrimary500, 700);
       text-overflow: ellipsis;
       @include line-clamp(3);
+
+      @include for-size(md, down) {
+        font-size: 1.6rem;
+      }
     }
 
     &__desc {
@@ -167,6 +171,11 @@
       line-height: 2.1rem;
       text-overflow: ellipsis;
       @include line-clamp(4);
+
+      @include for-size(md, down) {
+        font-size: 1.4rem;
+        @include line-clamp(3);
+      }
     }
 
     &__topics {
