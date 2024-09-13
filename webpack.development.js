@@ -1,5 +1,7 @@
 const common = require('./webpack.common');
 const {merge} = require("webpack-merge");
+const Dotenv = require("dotenv-webpack");
+const webpack = require('webpack');
 
 const devServer = {
     port: 4545,
@@ -13,13 +15,18 @@ const devServer = {
         publicPath: '/',
         watch: true
     },
-    watchFiles: ['src/**/*.(tsx|ts|scss|png|jpg)', 'public/**/*']
+    watchFiles: ['src/**/*.(tsx|ts|scss|png|jpg)', 'public/**/*'],
+    hot: true
 }
 
 const config = {
     mode: "development",
     devtool: "source-map",
-    devServer
+    devServer,
+    plugins: [
+        new Dotenv({ path: './.env.development' }),
+        new webpack.HotModuleReplacementPlugin(),
+    ],
 }
 
 module.exports = merge(common, config)
