@@ -1,3 +1,4 @@
+import React from "react";
 import {Flex, Layout} from "antd";
 import {IconFacebook, IconMail, IconMapPin, IconPhone} from "@assets/icons";
 

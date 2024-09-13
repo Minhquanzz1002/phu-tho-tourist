@@ -1,10 +1,10 @@
 import "./styles.scss";
 import {Col, Flex, Row} from "antd";
 import CardPost from "@shared/components/CardPost";
-import {useEffect, useState} from "react";
-import {IPost} from "../../../modules/posts/interface.ts";
-import {useSingleAsync} from "@hook/useAsync.tsx";
-import {getPosts} from "../../../modules/posts/repository.ts";
+import React, {useEffect, useState} from "react";
+import {IPost} from "../../../modules/posts/interface";
+import {useSingleAsync} from "@hook/useAsync";
+import {getPosts} from "../../../modules/posts/repository";
 
 const PostDetail = () => {
     const [posts, setPosts] = useState<IPost[]>([]);

@@ -1,8 +1,9 @@
+import React from "react";
 import "./styles.scss";
 import {Flex} from "antd";
 import {Link} from "react-router-dom";
-import {IPost} from "../../../modules/posts/interface.ts";
-import {formatToLocaleDateString, formatViews} from "@helper/function.tsx";
+import {IPost} from "../../../modules/posts/interface";
+import {formatToLocaleDateString, formatViews} from "@helper/function";
 
 export interface CardPostProps {
     size: "small" | "medium" | "large";

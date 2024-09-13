@@ -1,7 +1,7 @@
 import {DatePicker, DatePickerProps, Flex} from "antd";
 import {IconCalendarDays} from "@assets/icons";
 import dayjs from "dayjs";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 interface DateRangePickerProps {
     onChangeStartDate: (date?: Date) => void;

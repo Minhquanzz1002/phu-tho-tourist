@@ -1,5 +1,5 @@
 import {collection, getDocs, orderBy, query, where} from "firebase/firestore";
-import {db} from "../../config/firebaseConfig.ts";
+import {db} from "../../config/firebaseConfig";
 
 export const getDocuments = async (startDate?: Date, endDate?: Date) => {
     const documentsRef = collection(db, 'documents');

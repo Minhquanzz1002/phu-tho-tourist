@@ -1,9 +1,10 @@
+import React from 'react';
 import "./styles.scss";
 import {Avatar, Button, Flex, Space} from "antd";
 import {Link} from "react-router-dom";
-import {IJobPosting, JobStatus} from "../../../../modules/jobPosting/interface.ts";
+import {IJobPosting, JobStatus} from "../../../../modules/jobPosting/interface";
 import {IconMapPin} from "@assets/icons";
-import {timeAgo} from "@helper/function.tsx";
+import {timeAgo} from "@helper/function";
 
 interface ICardJobPostingProps {
     job: IJobPosting;
