@@ -1,15 +1,15 @@
 import "./styles.scss";
 import {Button, Col, Flex, Pagination, PaginationProps, Row} from "antd";
 import {IconBriefcase, IconIdCard, IconSetting} from "@assets/icons";
-import MapPinIcon from "@assets/icons/MapPinIcon.tsx";
+import MapPinIcon from "@assets/icons/MapPinIcon";
 import TitlePage from "@shared/components/TitlePage";
 import Chip from "@shared/components/Chip";
 import AutocompleteSearch from "@shared/components/AutocompleteSearch";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import CardJobPosting from "@view/Recruitment/components/CardJobPosting";
-import {IJobPosting} from "../../modules/jobPosting/interface.ts";
-import {useSingleAsync} from "@hook/useAsync.tsx";
-import {getJobPostings} from "../../modules/jobPosting/repository.ts";
+import {IJobPosting} from "../../modules/jobPosting/interface";
+import {useSingleAsync} from "@hook/useAsync";
+import {getJobPostings} from "../../modules/jobPosting/repository";
 import {Sheet} from "react-modal-sheet";
 
 const fields = [

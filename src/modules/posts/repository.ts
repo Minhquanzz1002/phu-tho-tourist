@@ -1,6 +1,6 @@
 import {collection, getDocs, limit, orderBy, query, where} from "firebase/firestore";
-import {db} from "../../config/firebaseConfig.ts";
-import {IPost} from "./interface.ts";
+import {db} from "../../config/firebaseConfig";
+import {IPost} from "./interface";
 
 const postsRef = collection(db, 'posts');
 

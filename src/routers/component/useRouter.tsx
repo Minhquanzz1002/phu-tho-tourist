@@ -1,4 +1,4 @@
-import {IRouter} from "../interface.ts";
+import {IRouter} from "../interface";
 import {Route} from "react-router-dom";
 import React from "react";
 import Loading from "@shared/components/Loading";

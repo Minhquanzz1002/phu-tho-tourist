@@ -2,8 +2,8 @@ import "./styles.scss";
 import React, {useEffect, useRef, useState} from "react";
 import {IconSearch} from "@assets/icons";
 import {Flex, Input, InputProps, List} from "antd";
-import useClickOutside from "@hook/useClickOutside.tsx";
-import {useLocalStorage} from "@hook/useLocalStorage.tsx";
+import useClickOutside from "@hook/useClickOutside";
+import {useLocalStorage} from "@hook/useLocalStorage";
 
 const ClearIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"

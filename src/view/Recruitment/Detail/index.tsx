@@ -1,3 +1,4 @@
+import React from "react";
 import "./styles.scss";
 import {Flex} from "antd";
 import FormApplication from "@view/Recruitment/Detail/components/FormApplication";

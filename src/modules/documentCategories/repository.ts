@@ -1,6 +1,6 @@
 import {collection, getDocs, query} from "firebase/firestore";
-import {db} from "../../config/firebaseConfig.ts";
-import {IDocumentCategory} from "./interface.ts";
+import {db} from "../../config/firebaseConfig";
+import {IDocumentCategory} from "./interface";
 
 export const getDocumentCategories = async () => {
     const documentCategoriesRef = collection(db, 'documentCategory');

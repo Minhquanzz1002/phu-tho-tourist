@@ -6,12 +6,12 @@ import {Link} from "react-router-dom";
 import TitlePage from "@shared/components/TitlePage";
 import DateRangePicker from "@shared/components/DateRangePicker";
 import AutocompleteSearch from "@shared/components/AutocompleteSearch";
-import {useSingleAsync} from "@hook/useAsync.tsx";
-import {getDocuments} from "../../modules/documents/repository.ts";
-import {IDocumentCategory} from "../../modules/documentCategories/interface.ts";
-import {getDocumentCategories} from "../../modules/documentCategories/repository.ts";
-import {formatDate, scrollToViewByElementId} from "@helper/function.tsx";
-import {IDocument} from "../../modules/documents/interface.ts";
+import {useSingleAsync} from "@hook/useAsync";
+import {getDocuments} from "../../modules/documents/repository";
+import {IDocumentCategory} from "../../modules/documentCategories/interface";
+import {getDocumentCategories} from "../../modules/documentCategories/repository";
+import {formatDate, scrollToViewByElementId} from "@helper/function";
+import {IDocument} from "../../modules/documents/interface";
 import DateRangeCustom from "@shared/components/DateRange";
 import BottomSheet from "@shared/components/BottomSheet";
 
