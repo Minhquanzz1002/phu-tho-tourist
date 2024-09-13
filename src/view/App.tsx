@@ -1,8 +1,8 @@
-import {memo} from "react";
+import React, {memo} from "react";
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import "@styles/styles.scss";
-import {PublicPage} from "./routers/component/PublicPage.tsx";
+import {PublicPage} from "../routers/component/PublicPage";
 import {ConfigProvider} from "antd";
 import dayjs from "dayjs";
 import relativeTime from 'dayjs/plugin/relativeTime';

@@ -1,5 +1,5 @@
 import "./styles.scss";
-import {useRef, useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {Carousel as AntCarousel, Flex} from "antd";
 import {CarouselRef} from "antd/es/carousel";
 import {IconArrowNext} from "@assets/icons";

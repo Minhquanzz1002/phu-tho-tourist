@@ -1,6 +1,6 @@
 import {collection, getDocs, query, where} from "firebase/firestore";
-import {db} from "../../config/firebaseConfig.ts";
-import {IJobPosting} from "./interface.ts";
+import {db} from "../../config/firebaseConfig";
+import {IJobPosting} from "./interface";
 
 
 export const getJobPostings = async (fields: string[], employmentTypes: string[], locations: string[]) => {

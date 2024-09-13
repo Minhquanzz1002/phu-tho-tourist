@@ -1,3 +1,4 @@
+import React from "react";
 import "./styles.scss";
 import {useEffect, useState} from "react";
 import {Button, Card, Col, Flex, Row} from "antd";
@@ -5,10 +6,10 @@ import {IconChevronsDown} from "@assets/icons";
 import FlipsterCarousel from "@shared/components/FlipsterCarousel";
 import {Link} from "react-router-dom";
 import CardPost from "@shared/components/CardPost";
-import {scrollToViewByElementId} from "@helper/function.tsx";
-import {IPost} from "../../modules/posts/interface.ts";
-import {useSingleAsync} from "@hook/useAsync.tsx";
-import {getPosts} from "../../modules/posts/repository.ts";
+import {scrollToViewByElementId} from "@helper/function";
+import {IPost} from "../../modules/posts/interface";
+import {useSingleAsync} from "@hook/useAsync";
+import {getPosts} from "../../modules/posts/repository";
 
 const flipsterItems: string[] = [
     "1.jpg",
