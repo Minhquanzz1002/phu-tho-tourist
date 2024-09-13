@@ -8,9 +8,9 @@
 
 ## CÔNG NGHỆ SỬ DỤNG
 
-- ViteJS
 - ReactJS
 - Typescript
+- Webpack
 - React Router DOM
 - Ant Design
 
