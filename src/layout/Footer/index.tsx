@@ -1,6 +1,7 @@
 import React from "react";
 import {Flex, Layout} from "antd";
 import {IconFacebook, IconMail, IconMapPin, IconPhone} from "@assets/icons";
+import {logo} from "@assets/images";
 
 const FooterComponent = () => {
     return (
@@ -8,13 +9,14 @@ const FooterComponent = () => {
             <div className="footer__container">
                 <Flex vertical justify="space-between">
                     <Flex>
-                        <img className="footer__logo" src="/logo.png" alt="Logo"/>
+                        <img className="footer__logo" src={logo} alt="Logo"/>
                         <Flex vertical justify="center" gap="small">
                             <h5 className="footer__company">CÔNG TY CỔ PHẦN DỊCH VỤ DU LỊCH PHÚ THỌ</h5>
                             <div className="footer__company-name">PHUTHOTOURIST</div>
                         </Flex>
                     </Flex>
-                    <div className="footer__copyright">Copyright © Công ty Cổ phần Dịch vụ Du lịch Phú Thọ (Phuthotourist)
+                    <div className="footer__copyright">Copyright © Công ty Cổ phần Dịch vụ Du lịch Phú Thọ
+                        (Phuthotourist)
                     </div>
                 </Flex>
 

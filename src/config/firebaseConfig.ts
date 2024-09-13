@@ -1,4 +1,4 @@
-import { getFirestore, initializeFirestore } from "firebase/firestore";
+import { initializeFirestore } from "firebase/firestore";
 import { initializeApp,  } from "firebase/app";
 
 const firebaseConfig = {
@@ -11,8 +11,6 @@ const firebaseConfig = {
     appId: process.env.FIREBASE_APP_ID,
     measurementId: process.env.MEASUREMENT_ID,
 };
-
-console.log(process.env.FIREBASE_API_KEY);
 
 const app = initializeApp(firebaseConfig);
 const db = initializeFirestore(app, {
